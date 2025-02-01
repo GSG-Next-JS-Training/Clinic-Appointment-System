@@ -1,10 +1,10 @@
 import "./App.css";
-import TestComponent from "./test-component";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
-      <TestComponent />
+      <AppRoutes />
     </>
   );
 }
