@@ -12,7 +12,7 @@ const TestComponent: React.FC = () => {
       <button
         onClick={() =>
           showSnackbar({
-            message: "booking added succesfully",
+            message: "booking added successfully",
             severity: "error",
             variant: "outlined",
           })

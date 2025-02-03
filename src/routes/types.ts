@@ -4,7 +4,8 @@ export type PageAccessName =
   | "doctor-dashboard"
   | "add-booking"
   | "appointments-dashboard"
-  | "test-component";
+  | "test-component"
+  | "Appointment-component";
 
 export interface PageAccessRight {
   roles: UserRole[];

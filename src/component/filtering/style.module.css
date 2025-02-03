@@ -1,0 +1,8 @@
+.FilterBox{
+    width: 90%; 
+    display: flex; 
+}
+
+.Input{
+    width: 200px;
+}
