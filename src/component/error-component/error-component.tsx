@@ -13,7 +13,7 @@ const ErrorComponent: React.FC<IProps> = (props: IProps) => {
       <img
         src={props.imgPath}
         alt={props.altText}
-       className={classes.errorImage}
+        className={classes.errorImage}
       />
     </Box>
 

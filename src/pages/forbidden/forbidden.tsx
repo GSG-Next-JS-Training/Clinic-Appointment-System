@@ -1,7 +1,7 @@
 import React from "react";
 import ErrorComponent from "@clinic/component/error-component";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
- 
+
 const ForbiddenComponent: React.FC = () => {
   return (
     <ErrorComponent 

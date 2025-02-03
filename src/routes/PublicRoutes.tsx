@@ -1,6 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import TestComponent from "../test-component";
 import ForbiddenComponent from "../pages/forbidden";
+import Unauthenticated from "../pages/unauthenticated";
 
 const publicRoutes: RouteObject = {
   path: "",
@@ -15,7 +16,7 @@ const publicRoutes: RouteObject = {
     },
     {
       path: "unauthenticated",
-      element: <h1>Unauthenticated Access</h1>,
+      element: <Unauthenticated />,
     },
     {
       path: "test-component",
