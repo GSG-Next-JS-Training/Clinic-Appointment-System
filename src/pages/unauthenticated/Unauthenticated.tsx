@@ -12,8 +12,8 @@ const Unauthenticated: FC = () => {
 };
 
 const withRoutHOC = routeHOC({
-    title: "forbiddenComponent",
-    pageAccessName: "forbidden-Component",
+    title: "Unauthenticated",
+    pageAccessName: "Unauthenticated",
 });
 
 export default withRoutHOC(Unauthenticated);
