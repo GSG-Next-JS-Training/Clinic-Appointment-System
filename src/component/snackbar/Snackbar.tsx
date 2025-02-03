@@ -3,7 +3,7 @@ import MuiSnackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Slide from "@mui/material/Slide";
-import useSnackbar from "../../hooks/useSnackbar";
+import useSnackbar from "@clinic/hooks/useSnackbar";
 
 const Snackbar: FC = () => {
   const { state, hideSnackbar } = useSnackbar();

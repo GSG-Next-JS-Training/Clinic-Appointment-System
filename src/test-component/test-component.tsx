@@ -1,26 +1,23 @@
 import React from "react";
 import routeHOC from "../routes/HOCs/routeHOC";
-import classes from "./style.module.css";
-import useSnackbar from "../hooks/useSnackbar";
+import useForm from "./hooks/useLogin";
+import ClinicTextField from "@clinic/component/text-field";
+import { Form, FormikProvider } from "formik";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const TestComponent: React.FC = () => {
-  const { showSnackbar } = useSnackbar();
+  const { formik } = useForm();
 
   return (
-    <div className={classes.TestComponent}>
-      <button
-        onClick={() =>
-          showSnackbar({
-            message: "booking added successfully",
-            severity: "error",
-            variant: "outlined",
-          })
-        }
-      >
-        show Snack barr
-      </button>
-    </div>
+    <FormikProvider value={formik}>
+      <Form>
+        <div>
+          <label>Name:</label>
+          <ClinicTextField type="text" name="name" />
+        </div>
+        <button type="submit">Submit</button>
+      </Form>
+    </FormikProvider>
   );
 };
 

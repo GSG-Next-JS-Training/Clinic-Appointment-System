@@ -8,7 +8,7 @@ import {
   SnackbarPayload,
 } from "../reducers/snackbarReducer";
 
-const useSnackbarContext = (initialState: ISnackbarState) => {
+const SnackBarContext = (initialState: ISnackbarState) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const showSnackbar = useCallback(
@@ -24,7 +24,7 @@ const useSnackbarContext = (initialState: ISnackbarState) => {
   return { state, showSnackbar, hideSnackbar };
 };
 
-type SnackbarContextValuesType = ReturnType<typeof useSnackbarContext>;
+type SnackbarContextValuesType = ReturnType<typeof SnackBarContext>;
 
 const initContextValues: SnackbarContextValuesType = {
   state: initialState,
@@ -40,7 +40,7 @@ const SnackbarProvider = ({
 }: {
   children: ReactNode;
 }): ReactElement => {
-  const contextValues = useSnackbarContext(initialState);
+  const contextValues = SnackBarContext(initialState);
   return (
     <SnackbarContext.Provider value={contextValues}>
       {children}
