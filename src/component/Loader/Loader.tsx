@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from "./Loader.module.css";
-
+import classes from "./style.module.css";
 interface LoaderProps {
   size?: number;
   color?: "primary" | "secondary" | "inherit";
@@ -16,7 +15,7 @@ const Loader: React.FC<LoaderProps> = ({
 }) => {
   if (!loading) return null;
   return (
-    <div className={styles.loaderContainer}>
+    <div className={classes.loaderContainer}>
       <CircularProgress size={size} color={color} />
     </div>
   );
