@@ -8,7 +8,7 @@ function App() {
     <>
       <AppRoutes />
       <Snackbar />
-      <Index />
+    
     </>
   );
 }
