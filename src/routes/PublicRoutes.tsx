@@ -1,5 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import TestComponent from "../test-component";
+import ForbiddenComponent from "../pages/forbidden";
 
 const publicRoutes: RouteObject = {
   path: "",
@@ -19,6 +20,10 @@ const publicRoutes: RouteObject = {
     {
       path: "test-component",
       element: <TestComponent />,
+    },
+    {
+      path: "forbidden-Component",
+      element: <ForbiddenComponent />,
     },
     {
       path: "*",
