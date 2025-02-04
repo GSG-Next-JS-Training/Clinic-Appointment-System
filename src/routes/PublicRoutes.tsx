@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
-import TestComponent from "../test-component";
-import ForbiddenComponent from "../pages/forbidden";
-import Unauthenticated from "../pages/unauthenticated";
+import TestComponent from "@clinic/test-component";
+import ForbiddenComponent from "@clinic/pages/forbidden";
+import Unauthenticated from "@clinic/pages/unauthenticated";
 
 const publicRoutes: RouteObject = {
   path: "",

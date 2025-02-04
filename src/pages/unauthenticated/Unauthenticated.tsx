@@ -1,6 +1,6 @@
 import { FC } from "react";
-import routeHOC from "../../routes/HOCs/routeHOC.js";
-import ErrorComponent from "../../component/error-component";
+import routeHOC from "@clinic/routes/HOCs/routeHOC";
+import ErrorComponent from "@clinic/component/error-component";
 
 const Unauthenticated: FC = () => {
     return (
