@@ -4,7 +4,7 @@ import { CardLabel, ICard } from "@clinic/types/header-card";
 import { createHeaderCard } from "@clinic/utils/header-card";
 import HeaderCard from "@clinic/component/headerCard-component";
 
-const HeaderComponent = () => {
+const Header = () => {
   const cards: ICard[] = [
     createHeaderCard(50, CardLabel.Pending),
     createHeaderCard(80, CardLabel.Confirmed),
@@ -29,4 +29,4 @@ const HeaderComponent = () => {
   );
 };
 
-export default HeaderComponent;
+export default Header;

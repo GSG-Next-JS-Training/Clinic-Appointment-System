@@ -1,11 +1,11 @@
 import React from "react";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
-import HeaderComponent from "@clinic/component/header-component";
+import Header from "@clinic/component/header-component";
 
 const DoctorDashboard: React.FC = () => {
   return (
     <>
-      <HeaderComponent />
+      <Header />
     </>
   );
 };
