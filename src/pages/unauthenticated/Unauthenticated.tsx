@@ -13,7 +13,7 @@ const Unauthenticated: FC = () => {
 
 const withRoutHOC = routeHOC({
     title: "Unauthenticated",
-    pageAccessName: "Unauthenticated",
+    pageAccessName: "unauthenticated",
 });
 
 export default withRoutHOC(Unauthenticated);
