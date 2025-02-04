@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import classes from "./style.module.css"; 
-import HeaderCard from "../headerCard-component";
+import HeaderCard from "@clinic/component/headerCard-component";
 import { CardLabel, ICard } from "@clinic/types/header-card";
 import { createHeaderCard } from "@clinic/utils/header-card";
 
