@@ -1,0 +1,43 @@
+.cardBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+
+.cardDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.cardNumber {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.cardText {
+  font-size: 30px;
+}
+
+.cardImage {
+  width: 100px;
+  height: 100px;
+}
+
+.cardImageHover {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardBox:hover .cardImageHover {
+  opacity: 1;
+}

@@ -2,6 +2,7 @@ import { RouteObject } from "react-router-dom";
 import TestComponent from "@clinic/test-component";
 import ForbiddenComponent from "@clinic/pages/forbidden";
 import Unauthenticated from "@clinic/pages/unauthenticated";
+import DoctorDashboard from "@clinic/pages/doctor-dashboard";
 
 const publicRoutes: RouteObject = {
   path: "",
@@ -25,6 +26,10 @@ const publicRoutes: RouteObject = {
     {
       path: "forbidden-Component",
       element: <ForbiddenComponent />,
+    },
+    {
+      path: "doctor-dashboard",
+      element:<DoctorDashboard/>
     },
     {
       path: "*",
