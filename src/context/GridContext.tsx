@@ -10,7 +10,7 @@ import {
     IGridState, 
     initialState, 
     Reducer_Action_Type 
-} from "../reducers/gridReducer.tsx";
+} from "@clinic/reducers/gridReducer";
 
 
 export const GridContextValues = (initialState: IGridState) => {
@@ -27,8 +27,9 @@ type GridContextValuesType = ReturnType<typeof GridContextValues>;
 
 const initialContextValue: GridContextValuesType = {
     state: initialState,
-    Init: () => {}
-}
+    Init: () => {},
+};
+
 export const GridContext = createContext<GridContextValuesType>(initialContextValue);
 
 export const GridProvider = ({children}: {children: ReactNode}) =>{

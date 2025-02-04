@@ -1,12 +1,12 @@
 import { FC, useEffect } from "react";
-import Grid from "../../component/grid";
-import routeHOC from "../../routes/HOCs/routeHOC.tsx";
+import Grid from "@clinic/component/grid";
+import routeHOC from "@clinic/routes/HOCs/routeHOC";
 import { GridColDef } from "@mui/x-data-grid";
-import useGrid from "../../hooks/useGrid.tsx";
+import useGrid from "@clinic/hooks/useGrid";
 import Box from "@mui/material/Box";
 import classes from './style.module.css';
 import Container from "@mui/material/Container";
-import Filtering from "../../component/filtering";
+import Filtering from "@clinic/component/filtering";
 
 const Appointments: FC = () => {
     const { Init } = useGrid();
@@ -38,8 +38,8 @@ const Appointments: FC = () => {
     );
 
     return (
-        <Box className = {classes.Wrapper} >
-            <Container className = {classes.Container}>
+        <Box className = {classes.wrapper} >
+            <Container className = {classes.container}>
                 <Filtering />
                 <Grid />
             </Container>
@@ -48,8 +48,8 @@ const Appointments: FC = () => {
 };
 
 const withRoutHOC = routeHOC({
-    title: "AppointmentComponent",
-    pageAccessName: "Appointment-component",
+    title: "AppointmentsDashboard",
+    pageAccessName: "appointments-dashboard",
 });
 
 export default withRoutHOC(Appointments);

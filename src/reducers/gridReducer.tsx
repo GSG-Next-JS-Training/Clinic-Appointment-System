@@ -1,8 +1,13 @@
-import { GridColDef } from "@mui/x-data-grid/";
+import { GridColDef } from "@mui/x-data-grid";
+
+export interface GridRowDef{
+    key: string,
+    value: number | string | Date
+}
 
 export interface IGridState{
     columns: GridColDef [];
-    rows: any [];
+    rows: GridRowDef [];
 }
 
 export const initialState: IGridState = {

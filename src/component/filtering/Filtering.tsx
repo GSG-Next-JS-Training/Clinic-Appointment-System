@@ -8,9 +8,14 @@ import Box from "@mui/material/Box";
 import classes from './style.module.css';
 
 const Filtering: FC = () =>{
+    const APPOINTMENT_STATUS = {
+        PENDING: "Pending",
+        CONFIRMED: "Confirmed",
+        COMPLETED: "Completed",
+    };
     return (
         <Box 
-        className = {classes.FilterBox}
+        className = {classes.filterBox}
         sx = {{ 
             flexDirection: { xs: "column", sm: "row" },
             alignItems: {xs: "start", sm: "center"}, 
@@ -19,21 +24,18 @@ const Filtering: FC = () =>{
             <TextField
                 label="Search Patient..."
                 variant="outlined"
-                className = {classes.Input}
+                className = {classes.input}
             />
             <FormControl>
-                <InputLabel
-                    variant="outlined"
-                >
+                <InputLabel variant="outlined">
                     Status
                 </InputLabel>
-                <Select
-                    className = {classes.Input}
-                >
+                <Select className = {classes.input}>
                     <MenuItem value="All">All</MenuItem>
-                    <MenuItem value="Pending">Pending</MenuItem>
-                    <MenuItem value="Confirmed">Confirmed</MenuItem>
-                    <MenuItem value="Completed">Completed</MenuItem>
+                    {
+                    Object.values(APPOINTMENT_STATUS).map(status =>
+                        <MenuItem value={status} key={status}>{status}</MenuItem>
+                    )}
                 </Select>
             </FormControl>
         </Box>

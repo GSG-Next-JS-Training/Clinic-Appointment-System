@@ -1,1 +1,1 @@
-export {default} from "./appointments"
+export {default} from "./appointments";

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { FC } from "react";
-import useGrid from "../../hooks/useGrid.tsx";
+import useGrid from "@clinic/hooks/useGrid";
 
 const Grid: FC = () => {
     const { state } = useGrid();

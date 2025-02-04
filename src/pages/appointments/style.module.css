@@ -1,4 +1,4 @@
-.Wrapper {
+.wrapper {
     min-height: 95vh;
     display: flex; 
     flex-direction: column; 
@@ -6,7 +6,7 @@
     justify-content: end; 
 }
 
-.Container{
+.container{
     display: flex; 
     flex-direction: column; 
     gap: 16px;

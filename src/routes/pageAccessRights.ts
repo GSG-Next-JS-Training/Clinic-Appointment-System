@@ -19,10 +19,6 @@ const pageAccessRights = new Map<PageAccessName, PageAccessRight>([
       roles: ["User"],
     },
   ],
-  // [
-  //   "Appointment-component",
-  //   {roles: ["Admin"]}
-  // ],
 ]);
 
 export default pageAccessRights;
