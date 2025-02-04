@@ -9,7 +9,7 @@ interface IProps {
   label: CardLabel;
 }
 
-const HeaderCard: React.FC = (props: IProps) => {
+const HeaderCard: React.FC<IProps> = (props: IProps) => {
   const hoverImage = `${props.image.split(".")[0]}-Hover.svg`;
   return (
     <Box 
