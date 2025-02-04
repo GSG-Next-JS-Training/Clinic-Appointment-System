@@ -1,4 +1,4 @@
-import { UserRole } from "../types/user";
+import { UserRole } from "@clinic/types/user";
 
 export type PageAccessName =
   | "doctor-dashboard"

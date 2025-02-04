@@ -6,7 +6,7 @@ export interface ISnackbarState {
   title: string;
   severity: AlertColor;
   variant: "filled" | "outlined" | "standard";
-  message: ReactNode;
+  message: string;
   anchorOrigin: SnackbarOrigin;
   action: ReactNode;
   autoHideDuration: number;
@@ -31,7 +31,7 @@ export enum REDUCER_ACTION_TYPES {
 }
 
 export interface SnackbarPayload extends Partial<ISnackbarState> {
-  message: ReactNode;
+  message: string;
 }
 
 interface ReducerAction {
