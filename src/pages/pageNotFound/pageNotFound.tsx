@@ -15,7 +15,7 @@ const pageNotFound: FC = () => {
 
 const withRouteHOC = routeHOC({
     title: "PageNotFound",
-    pageAccessName: "PageNotFound",
+    pageAccessName: "page-not-found",
 });
 
 

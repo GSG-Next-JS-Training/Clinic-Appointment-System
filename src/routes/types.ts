@@ -7,7 +7,7 @@ export type PageAccessName =
   | "test-component"
   | "forbidden-Component"
   | "unauthenticated"
-  | "PageNotFound";
+  | "page-not-found";
 
 
 export interface PageAccessRight {
