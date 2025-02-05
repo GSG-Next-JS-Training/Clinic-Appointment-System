@@ -1,10 +1,12 @@
-import { UserRole } from "../types/user";
+import { UserRole } from "@clinic/types/user";
 
 export type PageAccessName =
   | "doctor-dashboard"
   | "add-booking"
   | "appointments-dashboard"
-  | "test-component";
+  | "test-component"
+  | "forbidden-Component"
+  | "unauthenticated";
 
 export interface PageAccessRight {
   roles: UserRole[];

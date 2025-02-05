@@ -1,0 +1,14 @@
+.wrapper {
+    min-height: 95vh;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: end; 
+}
+
+.container{
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px;
+}
+

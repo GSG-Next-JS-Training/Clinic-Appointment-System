@@ -1,0 +1,8 @@
+.filterBox{
+    width: 90%; 
+    display: flex; 
+}
+
+.input{
+    width: 200px;
+}
