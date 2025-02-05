@@ -2,7 +2,6 @@ import { FC } from "react";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
 import ErrorComponent from "@clinic/component/error-component";
 
-
 const pageNotFound: FC = () => {
     return (
         <ErrorComponent
@@ -12,11 +11,9 @@ const pageNotFound: FC = () => {
     );
 };
 
-
 const withRouteHOC = routeHOC({
     title: "PageNotFound",
     pageAccessName: "page-not-found",
 });
-
 
 export default withRouteHOC(pageNotFound);
