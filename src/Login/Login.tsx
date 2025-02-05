@@ -3,9 +3,10 @@ import ClinicTextField from "@clinic/component/text-field";
 import useLogin from "./hooks/useLogin";
 import { Button, Typography, Box, IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import { useState } from "react";
 import classes from "./style.module.css";
+import routeHOC from "@clinic/routes/HOCs/routeHOC";
 
 const LoginComponent: React.FC = () => {
   const { formik } = useLogin();
@@ -38,7 +39,7 @@ const LoginComponent: React.FC = () => {
                 <ClinicTextField
                   type="text"
                   name="email"
-                  placeholder="Mays Qasem"
+                  placeholder="mays@gmail.com"
                   className={classes.input}
                   value={formik.values.email}
                   onChange={formik.handleChange}
@@ -63,12 +64,6 @@ const LoginComponent: React.FC = () => {
                       formik.touched.password && formik.errors.password
                     }
                   />
-                  <IconButton
-                    onClick={handleTogglePassword}
-                    className={classes.visibilityIcon}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
                 </Box>
 
                 <Typography
@@ -117,5 +112,8 @@ const LoginComponent: React.FC = () => {
     </Box>
   );
 };
-
-export default LoginComponent;
+const withRoutHOC = routeHOC({
+  title: "logincomponent",
+  pageAccessName: "login-component",
+});
+export default withRoutHOC(LoginComponent);

@@ -25,7 +25,8 @@ const useLogin = () => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
     const user = users.find(
-      (u: FormValues) => u.email === values.email && u.password === values.password
+      (u: FormValues) =>
+        u.email === values.email && u.password === values.password
     );
 
     if (user) {
@@ -55,4 +56,3 @@ const useLogin = () => {
 };
 
 export default useLogin;
-

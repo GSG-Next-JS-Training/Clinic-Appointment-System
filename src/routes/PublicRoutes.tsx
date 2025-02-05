@@ -2,13 +2,14 @@ import { RouteObject } from "react-router-dom";
 import TestComponent from "@clinic/test-component";
 import ForbiddenComponent from "@clinic/pages/forbidden";
 import Unauthenticated from "@clinic/pages/unauthenticated";
+import Login from "@clinic/Login/Login";
 
 const publicRoutes: RouteObject = {
   path: "",
   children: [
     {
       index: true,
-      element: <h1>login..</h1>,
+      element: <Login />,
     },
     {
       path: "unauthorized",
