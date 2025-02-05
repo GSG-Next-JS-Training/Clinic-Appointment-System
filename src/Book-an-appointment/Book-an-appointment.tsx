@@ -14,7 +14,8 @@ import {
   Typography,
 } from "@mui/material";
 import classes from "./style.module.css";
-import doctorImage from "../assets/DoctorImage.png";
+import doctorImage from "@clinic/assets/DoctorImage.png";
+import routeHOC from "@clinic/routes/HOCs/routeHOC";
 
 const BookComponent: React.FC = () => {
   const { formik } = useForm();
@@ -93,18 +94,22 @@ const BookComponent: React.FC = () => {
                 className={classes.input}
               />
               <FormControl fullWidth className={classes.input}>
-                <InputLabel>Gender</InputLabel>
+
                 <Select
                   name="Gender"
-                  value={formik.values.Gender}
+                  value={formik.values.Gender || ""}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  displayEmpty
                 >
-                  <MenuItem value="">Select Gender</MenuItem>
+                  <MenuItem value="" disabled>
+                    Select Gender
+                  </MenuItem>
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
                 </Select>
               </FormControl>
+
             </Box>
 
             <Box className={classes.row}>
@@ -158,4 +163,9 @@ const BookComponent: React.FC = () => {
         <div className={classes.imageContainer}> <img src={doctorImage} alt="Doctor and Nurse" className={classes.image} /> </div> </div> </div>
   );
 };
-export default BookComponent;
+const withRoutHOC = routeHOC({
+  title: "bookcomponent",
+  pageAccessName: "add-booking",
+});
+
+export default withRoutHOC(BookComponent);

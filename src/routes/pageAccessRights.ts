@@ -13,12 +13,12 @@ const pageAccessRights = new Map<PageAccessName, PageAccessRight>([
       roles: ["Admin"],
     },
   ],
-  [
-    "add-booking",
-    {
-      roles: ["User"],
-    },
-  ],
+  // [
+  //   "add-booking",
+  //   {
+  //     roles: ["User"],
+  //   },
+  // ],
 ]);
 
 export default pageAccessRights;
