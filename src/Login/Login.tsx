@@ -13,10 +13,6 @@ const LoginComponent: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
 
-  const handleTogglePassword = () => {
-    setShowPassword((prev) => !prev);
-  };
-
   const handleForgotPassword = () => {
     setIsForgotPassword(true);
   };
@@ -50,7 +46,7 @@ const LoginComponent: React.FC = () => {
 
                 <Box className={classes.passwordBox}>
                   <ClinicTextField
-                    type={showPassword ? "text" : "password"}
+                    type="password"
                     name="password"
                     placeholder="Password"
                     className={classes.input}
