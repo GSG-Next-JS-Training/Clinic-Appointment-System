@@ -1,11 +1,13 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Box from "@mui/material/Box";
-import classes from './style.module.css';
+import classes from "./style.module.css";
+import useGrid from "@clinic/hooks/useGrid";
+import { useSearchParams } from "react-router-dom";
 
 const Filtering: FC = () =>{
     const APPOINTMENT_STATUS = {
@@ -13,6 +15,25 @@ const Filtering: FC = () =>{
         CONFIRMED: "Confirmed",
         COMPLETED: "Completed",
     };
+    
+    const { state , SetFilter } = useGrid();
+    const [ params, setParams ] = useSearchParams();
+    const [ name, setName ] = useState(params.get("name") || "");
+    const [ status, setStatus ] = useState(params.get("status") || "All");
+    
+    useEffect(() => {
+        SetFilter({filters: {name, status}});
+        if(name.length){
+            params.set( "name",name );
+        }else{
+            params.delete("name");
+        }
+        params.set( "status", status );
+        setParams(params);
+    }, 
+    [state, name, status]
+);
+
     return (
         <Box 
         className = {classes.filterBox}
@@ -25,12 +46,18 @@ const Filtering: FC = () =>{
                 label="Search Patient..."
                 variant="outlined"
                 className = {classes.input}
+                value = {name}
+                onChange = {(e) => setName(e.target.value)}
             />
             <FormControl>
                 <InputLabel variant="outlined">
                     Status
                 </InputLabel>
-                <Select className = {classes.input}>
+                <Select 
+                className = {classes.input}
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                >
                     <MenuItem value="All">All</MenuItem>
                     {
                     Object.values(APPOINTMENT_STATUS).map(status =>

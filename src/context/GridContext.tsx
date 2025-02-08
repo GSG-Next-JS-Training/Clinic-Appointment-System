@@ -20,7 +20,17 @@ export const GridContextValues = (initialState: IGridState) => {
         (payload: IActionPayload) => dispatch({type: Reducer_Action_Type.INIT, payload}),
         []
     );
-return { Init, state};
+
+    const SetFilter = useCallback(
+        (payload: IActionPayload) => dispatch({type: Reducer_Action_Type.SET_FILTERS, payload}),
+        []
+    );
+    
+    const UpdateRows = useCallback(
+        (payload: IActionPayload) => dispatch({type: Reducer_Action_Type.UPDATE_ROWS, payload}),
+        []
+    );
+return { Init, state, SetFilter, UpdateRows};
 }
 
 type GridContextValuesType = ReturnType<typeof GridContextValues>;
@@ -28,6 +38,8 @@ type GridContextValuesType = ReturnType<typeof GridContextValues>;
 const initialContextValue: GridContextValuesType = {
     state: initialState,
     Init: () => {},
+    SetFilter: () => {},
+    UpdateRows: () => {}
 };
 
 export const GridContext = createContext<GridContextValuesType>(initialContextValue);
