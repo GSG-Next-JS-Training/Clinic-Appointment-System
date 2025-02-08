@@ -6,7 +6,9 @@ export type PageAccessName =
   | "appointments-dashboard"
   | "test-component"
   | "forbidden-Component"
-  | "unauthenticated";
+  | "unauthenticated"
+  | "page-not-found";
+
 
 export interface PageAccessRight {
   roles: UserRole[];
