@@ -14,7 +14,9 @@ const Loader: React.FC<LoaderProps> = ({
   color = "primary",
   loading = true,
 }) => {
+  
   if (!loading) return null;
+
   return (
     <div className={styles.loaderContainer}>
       <CircularProgress size={size} color={color} />
