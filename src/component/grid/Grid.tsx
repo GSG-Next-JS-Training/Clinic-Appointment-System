@@ -5,9 +5,9 @@ import useGrid from "@clinic/hooks/useGrid";
 import useSnackbar from "@clinic/hooks/useSnackbar.js";
 
 export const useGridData = () => {
-    const { showSnackbar } = useSnackbar();
-    const { state, UpdateRows } = useGrid();
-    const { columns, rows, filters} = state;
+    const {showSnackbar} = useSnackbar();
+    const {state, updateRows} = useGrid();
+    const {columns, rows, filters} = state;
 
     const filteredRows = rows.filter((row) => {
         const nameMatches = filters.name
@@ -26,7 +26,7 @@ export const useGridData = () => {
             return updatedRow; 
         }
         const updatedRows = rows.map(row => row.id === updatedRow.id ? updatedRow : row);
-        UpdateRows({rows: updatedRows});
+        updateRows({rows: updatedRows});
         showSnackbar({
             message: "Row Updated successfully",
             severity: "success",
@@ -34,7 +34,7 @@ export const useGridData = () => {
         });
         return updatedRow;
     };
-
+    
     return {filteredRows, handleRowUpdate, showSnackbar, columns};
 }
 

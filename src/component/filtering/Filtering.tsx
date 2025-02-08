@@ -8,27 +8,22 @@ import Box from "@mui/material/Box";
 import classes from "./style.module.css";
 import useGrid from "@clinic/hooks/useGrid";
 import { useSearchParams } from "react-router-dom";
+import { APPOINTMENT_STATUS } from "@clinic/constant.js";
 
 const Filtering: FC = () =>{
-    const APPOINTMENT_STATUS = {
-        PENDING: "Pending",
-        CONFIRMED: "Confirmed",
-        COMPLETED: "Completed",
-    };
-    
-    const { state , SetFilter } = useGrid();
-    const [ params, setParams ] = useSearchParams();
-    const [ name, setName ] = useState(params.get("name") || "");
-    const [ status, setStatus ] = useState(params.get("status") || "All");
+    const {state , setFilter} = useGrid();
+    const [params, setParams] = useSearchParams();
+    const [name, setName] = useState(params.get("name") || "");
+    const [status, setStatus] = useState(params.get("status") || "All");
     
     useEffect(() => {
-        SetFilter({filters: {name, status}});
+        setFilter({filters: {name, status}});
         if(name.length){
-            params.set( "name",name );
+            params.set("name",name);
         }else{
             params.delete("name");
         }
-        params.set( "status", status );
+        params.set("status", status);
         setParams(params);
     }, 
     [state, name, status]

@@ -16,30 +16,30 @@ import {
 export const GridContextValues = (initialState: IGridState) => {
     const [state, dispatch] = useReducer(gridReducer, initialState);
 
-    const Init = useCallback(
+    const init = useCallback(
         (payload: IActionPayload) => dispatch({type: Reducer_Action_Type.INIT, payload}),
         []
     );
 
-    const SetFilter = useCallback(
+    const setFilter = useCallback(
         (payload: IActionPayload) => dispatch({type: Reducer_Action_Type.SET_FILTERS, payload}),
         []
     );
     
-    const UpdateRows = useCallback(
+    const updateRows = useCallback(
         (payload: IActionPayload) => dispatch({type: Reducer_Action_Type.UPDATE_ROWS, payload}),
         []
     );
-return { Init, state, SetFilter, UpdateRows};
+return {init, state, setFilter, updateRows};
 }
 
 type GridContextValuesType = ReturnType<typeof GridContextValues>;
 
 const initialContextValue: GridContextValuesType = {
     state: initialState,
-    Init: () => {},
-    SetFilter: () => {},
-    UpdateRows: () => {}
+    init: () => {},
+    setFilter: () => {},
+    updateRows: () => {}
 };
 
 export const GridContext = createContext<GridContextValuesType>(initialContextValue);
