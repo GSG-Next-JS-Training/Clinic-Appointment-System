@@ -1,16 +1,14 @@
 import Box from "@mui/material/Box";
 import classes from "./style.module.css"; // Also works
 import HeaderCard from "../headercard-component";
-import { CardLabel, ICard } from "../../types/header-card";
-import { createHeaderCard } from "../../utils/header-card";
+import { CardLabel, ICard } from "@clinic/types/header-card";
+import { createHeaderCard } from "@clinic/utils/header-card";
 
 const cards: ICard[] = [
   createHeaderCard(50, CardLabel.Pending),
   createHeaderCard(80, CardLabel.Confirmed),
   createHeaderCard(30, CardLabel.Appointments),
 ];
-
-
 
 const HeaderComponent = () => {
   return (
@@ -28,7 +26,3 @@ const HeaderComponent = () => {
 
 
 export default HeaderComponent;
-
-
-
-
