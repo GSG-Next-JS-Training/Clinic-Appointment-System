@@ -2,7 +2,6 @@ import { RouteObject } from "react-router-dom";
 import TestComponent from "@clinic/test-component";
 import ForbiddenComponent from "@clinic/pages/forbidden";
 import Unauthenticated from "@clinic/pages/unauthenticated";
-import DoctorDashboard from "@clinic/pages/doctor-dashboard";
 import PageNotFound from "@clinic/pages/pageNotFound";
 
 const publicRoutes: RouteObject = {
@@ -27,10 +26,6 @@ const publicRoutes: RouteObject = {
     {
       path: "forbidden-component",
       element: <ForbiddenComponent />,
-    },
-    {
-      path: "doctor-dashboard",
-      element:<DoctorDashboard/>
     },
     {
       path: "*",
