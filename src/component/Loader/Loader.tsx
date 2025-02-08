@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from "./Loader.module.css";
+import Box from "@mui/material/Box";
+import classes from "./style.module.css";
 
 interface LoaderProps {
   size?: number;
@@ -9,7 +10,7 @@ interface LoaderProps {
   loading?: boolean;
 }
 
-const Loader: React.FC<LoaderProps> = ({
+const Loader: React.FC<Partial<LoaderProps>> = ({
   size = 60,
   color = "primary",
   loading = true,
@@ -18,9 +19,9 @@ const Loader: React.FC<LoaderProps> = ({
   if (!loading) return null;
 
   return (
-    <div className={styles.loaderContainer}>
+    <Box className={classes.loaderContainer}>
       <CircularProgress size={size} color={color} />
-    </div>
+    </Box>
   );
 };
 
