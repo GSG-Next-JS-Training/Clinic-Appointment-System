@@ -55,12 +55,16 @@ const BookComponent: React.FC = () => {
         minDate: todayString,
         onChange: (selectedDates: Date[]) => {
           if (selectedDates.length > 0) {
-            formik.setFieldValue("Date", selectedDates[0].toISOString().split("T")[0]);
+
+            const formattedDate = selectedDates[0]
+              .toLocaleDateString("en-CA");
+            formik.setFieldValue("Date", formattedDate);
           }
         },
       });
     }
   }, [formik]);
+
 
   return (
     <div className={classes.container}>

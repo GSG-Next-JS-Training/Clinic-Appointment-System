@@ -44,7 +44,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-  background-color: transparent;
+  background-color:transparent;
 }
 
 .input:focus {
