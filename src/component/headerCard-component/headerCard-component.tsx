@@ -30,14 +30,14 @@ const HeaderCard: React.FC<IProps> = (props: IProps) => {
       <Box 
       className={classes.cardDetails}
       >
-        <span 
+        <Box 
         className={classes.cardNumber}
         >{props.count}
-        </span>
-        <span 
+        </Box>
+        <Box 
         className={classes.cardText}
         >{props.label}
-        </span>
+        </Box>
       </Box>
     </Box>
   );
