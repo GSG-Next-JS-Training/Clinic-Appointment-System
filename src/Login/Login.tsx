@@ -1,9 +1,11 @@
 import { Form, FormikProvider } from "formik";
 import ClinicTextField from "@clinic/component/text-field";
 import useLogin from "./hooks/useLogin";
-import { Button, Typography, Box, IconButton } from "@mui/material";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
-
 import { useState } from "react";
 import classes from "./style.module.css";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
@@ -108,8 +110,10 @@ const LoginComponent: React.FC = () => {
     </Box>
   );
 };
+
 const withRoutHOC = routeHOC({
   title: "logincomponent",
   pageAccessName: "login-component",
 });
+
 export default withRoutHOC(LoginComponent);
