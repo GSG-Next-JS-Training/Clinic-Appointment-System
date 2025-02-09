@@ -1,16 +1,10 @@
 .cardBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 16px;
   position: relative;
 }
 
 .cardDetails {
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   color: white;
 }
 

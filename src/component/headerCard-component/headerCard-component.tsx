@@ -13,7 +13,7 @@ const HeaderCard: React.FC<IProps> = (props: IProps) => {
   const hoverImage = `${props.image.split(".")[0]}-Hover.svg`;
   return (
     <Box 
-    className={classes.cardBox}
+    className={`${classes.cardBox} flexCenter`}
     >
       <Box>
         <img 
@@ -28,7 +28,7 @@ const HeaderCard: React.FC<IProps> = (props: IProps) => {
         />
       </Box>
       <Box 
-      className={classes.cardDetails}
+      className={`${classes.cardDetails} flexCenter`}
       >
         <Box 
         className={classes.cardNumber}

@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SnackbarProvider from "./context/SnackbarContext";
 import { GridProvider } from "./context/GridContext";
+import './index.css';
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
