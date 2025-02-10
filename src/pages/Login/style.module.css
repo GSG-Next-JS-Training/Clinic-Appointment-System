@@ -74,7 +74,7 @@
 
 .imageContainer {
   width: 65%;
-  background: url("../assets/loginImage.jpg") no-repeat center center;
+  background: url("../../assets/loginImage.jpg") no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;

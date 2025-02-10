@@ -2,7 +2,7 @@ import { RouteObject } from "react-router-dom";
 import TestComponent from "@clinic/test-component";
 import ForbiddenComponent from "@clinic/pages/forbidden";
 import Unauthenticated from "@clinic/pages/unauthenticated";
-import Login from "@clinic/Login/Login";
+import Login from "@clinic/pages/Login/Login";
 
 const publicRoutes: RouteObject = {
   path: "",
