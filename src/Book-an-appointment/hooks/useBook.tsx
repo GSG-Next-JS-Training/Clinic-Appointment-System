@@ -30,8 +30,6 @@ const useForm = () => {
     }
   }, []);
 
-
-
   const bookAppointment = (values: FormValues) => {
     const existingBookings: FormValues[] = JSON.parse(localStorage.getItem("bookings") || "[]");
 

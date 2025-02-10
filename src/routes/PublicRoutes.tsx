@@ -2,6 +2,7 @@ import { RouteObject } from "react-router-dom";
 import TestComponent from "@clinic/test-component";
 import ForbiddenComponent from "@clinic/pages/forbidden";
 import Unauthenticated from "@clinic/pages/unauthenticated";
+
 const publicRoutes: RouteObject = {
   path: "",
   children: [
@@ -12,12 +13,10 @@ const publicRoutes: RouteObject = {
     {
       path: "unauthorized",
       element: <h1>Unauthorized Access</h1>,
-    },
-    {
+    }, {
       path: "unauthenticated",
       element: <Unauthenticated />,
     },
-    
     {
       path: "test-component",
       element: <TestComponent />,

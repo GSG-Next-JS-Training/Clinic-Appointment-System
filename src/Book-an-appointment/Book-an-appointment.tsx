@@ -1,34 +1,26 @@
 import { Form, FormikProvider } from "formik";
 import ClinicTextField from "@clinic/component/text-field";
-import useForm from "./hooks/useBook";
+import useBook from "./hooks/useBook";
 import { useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
-import {
-  Box,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-  Button,
-  Typography,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import classes from "./style.module.css";
 import doctorImage from "@clinic/assets/DoctorImage.png";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
+import { Gender } from "./enum";
 
 const BookComponent: React.FC = () => {
-  const { formik } = useForm();
+  const { formik } = useBook();
   const dateRef = useRef<HTMLInputElement>(null);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
 
-  const generateTimeSlots = () => {
-    const slots = [];
-    for (let hour = 9; hour < 17; hour++) {
-      slots.push(`${hour}:00 - ${hour + 1}:00`);
-    }
-    return slots;
-  };
+  const generateTimeSlots = () => Array.from({ length: 8 }, (_, i) => `${i + 9}:00 - ${i + 10}:00`);
 
   useEffect(() => {
     setAvailableTimes(generateTimeSlots());
@@ -55,9 +47,7 @@ const BookComponent: React.FC = () => {
         minDate: todayString,
         onChange: (selectedDates: Date[]) => {
           if (selectedDates.length > 0) {
-
-            const formattedDate = selectedDates[0]
-              .toLocaleDateString("en-CA");
+            const formattedDate = selectedDates[0].toLocaleDateString("en-CA");
             formik.setFieldValue("Date", formattedDate);
           }
         },
@@ -65,14 +55,13 @@ const BookComponent: React.FC = () => {
     }
   }, [formik]);
 
-
   return (
-    <div className={classes.container}>
+    <Box className={classes.container}>
       <Typography variant="h4" className={classes.title}>
         We Are Always Ready to Help You!
       </Typography>
 
-      <div className={classes.content}>
+      <Box className={classes.content}>
         <FormikProvider value={formik}>
           <Form className={classes.form}>
             <Box className={classes.row}>
@@ -98,7 +87,6 @@ const BookComponent: React.FC = () => {
                 className={classes.input}
               />
               <FormControl fullWidth className={classes.input}>
-
                 <Select
                   name="Gender"
                   value={formik.values.Gender || ""}
@@ -109,15 +97,17 @@ const BookComponent: React.FC = () => {
                   <MenuItem value="" disabled>
                     Select Gender
                   </MenuItem>
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
+                  {Object.values(Gender).map((gender) => (
+                    <MenuItem key={gender} value={gender}>
+                      {gender}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
-
             </Box>
 
             <Box className={classes.row}>
-              <input
+              <ClinicTextField
                 ref={dateRef}
                 type="date"
                 name="Date"
@@ -159,14 +149,17 @@ const BookComponent: React.FC = () => {
 
             <Button type="submit" variant="contained" className={classes.submitButton}>
               Book An Appointment
-
             </Button>
           </Form>
-
         </FormikProvider>
-        <div className={classes.imageContainer}> <img src={doctorImage} alt="Doctor and Nurse" className={classes.image} /> </div> </div> </div>
+        <Box className={classes.imageContainer}>
+          <img src={doctorImage} alt="Doctor and Nurse" className={classes.image} />
+        </Box>
+      </Box>
+    </Box>
   );
 };
+
 const withRoutHOC = routeHOC({
   title: "bookcomponent",
   pageAccessName: "add-booking",
