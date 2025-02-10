@@ -2,7 +2,8 @@ import { useFormik } from "formik";
 import { loginValidationSchema } from "../validationSchema";
 import { FormValues } from "../types";
 import useSnackbar from "@clinic/hooks/useSnackbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const useLogin = () => {
   const { showSnackbar } = useSnackbar();

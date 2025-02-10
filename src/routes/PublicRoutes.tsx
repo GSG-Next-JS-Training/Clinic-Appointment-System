@@ -9,7 +9,7 @@ const publicRoutes: RouteObject = {
   children: [
     {
       index: true,
-      element: <Login />,
+      element: <Login/>,
     },
     {
       path: "unauthorized",
