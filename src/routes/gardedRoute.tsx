@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Layout from "@clinic/component/navbar/layout";
 
 const GardedRoute: FC = () => {
   const location = useLocation();
@@ -14,7 +17,11 @@ const GardedRoute: FC = () => {
       />
     );
 
-  return <Outlet />;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 };
 
 export default GardedRoute;
