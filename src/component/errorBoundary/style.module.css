@@ -1,0 +1,20 @@
+.wrapper{
+    gap: 2rem;
+}
+
+.content{
+    flex-direction: column;
+    gap: 1rem;
+    color: #87BFF7;
+}
+
+.button{
+    background: #fff;
+    transition: all 0.3s ease; 
+
+}
+
+.button:hover{
+    background: #87BFF7;
+    color: #fff;
+}
