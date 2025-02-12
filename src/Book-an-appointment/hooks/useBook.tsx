@@ -6,19 +6,14 @@ import useSnackbar from "@clinic/hooks/useSnackbar";
 import { useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
+import {generateTimeSlots} from '@clinic/utils/index'
 
 const useForm = () => {
   const { showSnackbar } = useSnackbar();
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const dateRef = useRef<HTMLInputElement>(null);
 
-  const generateTimeSlots = () => {
-    const slots = [];
-    for (let hour = 9; hour < 17; hour++) {
-      slots.push(`${hour}:00 - ${hour + 1}:00`);
-    }
-    return slots;
-  };
+  
   useEffect(() => {
     if (dateRef.current) {
       const today = new Date();
