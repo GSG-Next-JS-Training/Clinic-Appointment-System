@@ -4,19 +4,20 @@ import routeHOC from "@clinic/routes/HOCs/routeHOC";
 import { GridColDef } from "@mui/x-data-grid";
 import useGrid from "@clinic/hooks/useGrid";
 import Box from "@mui/material/Box";
-import classes from './style.module.css';
+import classes from "./style.module.css";
 import Container from "@mui/material/Container";
 import Filtering from "@clinic/component/filtering";
+import { APPOINTMENT_STATUS } from "@clinic/constant.js";
 
 const Appointments: FC = () => {
-    const { Init } = useGrid();
+    const {init} = useGrid();
 
     const columns: GridColDef[] = [
         { field: "patientName", headerName: "Name", width: 150 },
         { field: "date", headerName: "Date", type: "string", width: 150, },
-        { field: "status", headerName: "Status", width: 150,},
+        { field: "status", headerName: "Status", width: 150, editable: true, type: "singleSelect", valueOptions: Object.values(APPOINTMENT_STATUS)},
         { field: "note", headerName: "Note", width: 150 },
-        { field: "review", headerName: "Doctor Review", flex: 1 },
+        { field: "review", headerName: "Doctor Review", flex: 1, editable: true },
     ];
     
     const rows = [
@@ -33,7 +34,7 @@ const Appointments: FC = () => {
     ];
 
     useEffect(() =>
-        Init({ rows, columns }),
+        init({ rows, columns }),
         []
     );
 
