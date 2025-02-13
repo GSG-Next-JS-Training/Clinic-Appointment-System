@@ -7,7 +7,8 @@ export type PageAccessName =
   | "test-component"
   | "forbidden-component"
   | "unauthenticated"
-  | "login-component";
+  | "login-component"
+  | "user-management";
 
 export interface PageAccessRight {
   roles: UserRole[];
