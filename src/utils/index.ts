@@ -1,7 +1,1 @@
-export const generateTimeSlots = () => {
-    const slots = [];
-    for (let hour = 9; hour < 17; hour++) {
-        slots.push(`${hour}:00 - ${hour + 1}:00`);
-    }
-    return slots;
-};
+export const generateTimeSlots = () => Array.from({ length: 8 }, (_, i) => `${i + 9}:00 - ${i + 10}:00`);

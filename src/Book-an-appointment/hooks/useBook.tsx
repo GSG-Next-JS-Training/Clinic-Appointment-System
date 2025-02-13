@@ -6,14 +6,13 @@ import useSnackbar from "@clinic/hooks/useSnackbar";
 import { useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
-import {generateTimeSlots} from '@clinic/utils/index'
+import { generateTimeSlots } from '@clinic/utils/index';
 
-const useForm = () => {
+const useBook = () => {
   const { showSnackbar } = useSnackbar();
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const dateRef = useRef<HTMLInputElement>(null);
 
-  
   useEffect(() => {
     if (dateRef.current) {
       const today = new Date();
@@ -29,7 +28,7 @@ const useForm = () => {
     const existingBookings: FormValues[] = JSON.parse(localStorage.getItem("bookings") || "[]");
 
     const conflictingBooking = existingBookings.find(
-      (booking) => booking.Date === values.Date && booking.Time === values.Time
+      (booking) => booking.date === values.date && booking.time === values.time
     );
 
     if (conflictingBooking) {
@@ -40,7 +39,7 @@ const useForm = () => {
     existingBookings.push(values);
     localStorage.setItem("bookings", JSON.stringify(existingBookings));
 
-    setAvailableTimes((prevTimes) => prevTimes.filter((time) => time !== values.Time));
+    setAvailableTimes((prevTimes) => prevTimes.filter((time) => time !== values.time));
 
     showSnackbar({ message: "Appointment booked successfully!" });
   };
@@ -56,17 +55,17 @@ const useForm = () => {
   });
 
   useEffect(() => {
-    if (formik.values.Date) {
+    if (formik.values.date) {
       const existingBookings = JSON.parse(localStorage.getItem("bookings") || "[]");
       const bookedTimes = existingBookings
-        .filter((booking) => booking.Date === formik.values.Date)
-        .map((booking) => booking.Time);
+        .filter((booking) => booking.date === formik.values.date)
+        .map((booking) => booking.time);
 
       setAvailableTimes(generateTimeSlots().filter((time) => !bookedTimes.includes(time)));
     }
-  }, [formik.values.Date]);
+  }, [formik.values.date]);
 
   return { formik, availableTimes, dateRef };
 };
 
-export default useForm;
+export default useBook;

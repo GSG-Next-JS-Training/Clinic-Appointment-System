@@ -12,11 +12,11 @@ const privateRoutes: RouteObject = {
         {
           index: true,
           element: <h1>Landing Page</h1>,
-        },
-        {
+        }, {
           path: "add-booking",
           element: <BookAnAppointment />
         },
+
         {
           path: "appointments-dashboard",
           element: <Appointments />,

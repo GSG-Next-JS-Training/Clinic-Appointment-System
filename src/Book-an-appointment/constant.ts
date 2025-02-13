@@ -1,9 +1,9 @@
 export const INITAIL_VALUES = {
-  PatientName: "",
-  Contact: "",
-  Age: null,
-  Gender: "",
-  Date: "",
-  Time: "",
-  Symptoms: ""
+  patientName: "",
+  contact: "",
+  age: null,
+  gender: "",
+  date: "",
+  time: "",
+  symptoms: ""
 };

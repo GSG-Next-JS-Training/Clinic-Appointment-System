@@ -13,29 +13,48 @@ import Typography from "@mui/material/Typography";
 import classes from "./style.module.css";
 import doctorImage from "@clinic/assets/DoctorImage.png";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
-import { Gender } from "./enum";
+import { Gender } from "./types";
+import { generateTimeSlots } from "@clinic/utils";
 
 const BookComponent: React.FC = () => {
   const { formik } = useBook();
   const dateRef = useRef<HTMLInputElement>(null);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
 
-  const generateTimeSlots = () => Array.from({ length: 8 }, (_, i) => `${i + 9}:00 - ${i + 10}:00`);
-
   useEffect(() => {
     setAvailableTimes(generateTimeSlots());
   }, []);
 
   useEffect(() => {
-    const existingBookings = JSON.parse(localStorage.getItem("bookings") || "[]");
-    if (formik.values.Date) {
+    if (formik.values.date) {
+      const today = new Date();
+      const existingBookings = JSON.parse(localStorage.getItem("bookings") || "[]");
       const bookedTimes = existingBookings
-        .filter((booking: { Date: string; Time: string }) => booking.Date === formik.values.Date)
-        .map((booking) => booking.Time);
+        .filter((booking) => booking.date === formik.values.date)
+        .map((booking) => booking.time);
 
-      setAvailableTimes(generateTimeSlots().filter((time) => !bookedTimes.includes(time)));
+      const times = generateTimeSlots();
+      const now = new Date();
+      const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes(); // الوقت الحالي بالدقائق
+
+      const isToday = formik.values.date === today.toISOString().split("T")[0]; // التحقق إذا كان التاريخ المختار هو اليوم الحالي
+
+      if (isToday) {
+        setAvailableTimes(
+          times.filter((time) => {
+            const [hour, minute] = time.split(":").map(Number);
+            const timeInMinutes = hour * 60 + minute;
+
+            return timeInMinutes > currentTimeInMinutes && !bookedTimes.includes(time);
+          })
+        );
+      } else {
+
+        setAvailableTimes(times.filter((time) => !bookedTimes.includes(time)));
+      }
     }
-  }, [formik.values.Date]);
+  }, [formik.values.date]);
+
 
   useEffect(() => {
     if (dateRef.current) {
@@ -47,13 +66,19 @@ const BookComponent: React.FC = () => {
         minDate: todayString,
         onChange: (selectedDates: Date[]) => {
           if (selectedDates.length > 0) {
-            const formattedDate = selectedDates[0].toLocaleDateString("en-CA");
-            formik.setFieldValue("Date", formattedDate);
+            const selectedDate = selectedDates[0];
+            const year = selectedDate.getFullYear();
+            const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+            const day = String(selectedDate.getDate()).padStart(2, "0");
+            const formattedDate = `${year}-${month}-${day}`;
+
+            formik.setFieldValue("date", formattedDate);
           }
         },
       });
     }
-  }, [formik]);
+  }, []);
+
 
   return (
     <Box className={classes.container}>
@@ -65,86 +90,46 @@ const BookComponent: React.FC = () => {
         <FormikProvider value={formik}>
           <Form className={classes.form}>
             <Box className={classes.row}>
-              <ClinicTextField
-                type="text"
-                name="PatientName"
-                placeholder="Patient name"
-                className={classes.input}
-              />
-              <ClinicTextField
-                type="text"
-                name="Contact"
-                placeholder="Contact"
-                className={classes.input}
-              />
+              <ClinicTextField type="text" name="patientName" placeholder="Patient name" className={classes.input} />
+              <ClinicTextField type="text" name="contact" placeholder="Contact" className={classes.input} />
             </Box>
 
             <Box className={classes.row}>
-              <ClinicTextField
-                type="number"
-                name="Age"
-                placeholder="Age"
-                className={classes.input}
-              />
-              <FormControl fullWidth className={classes.input}>
-                <Select
-                  name="Gender"
-                  value={formik.values.Gender || ""}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  displayEmpty
-                >
-                  <MenuItem value="" disabled>
-                    Select Gender
-                  </MenuItem>
+              <ClinicTextField type="number" name="age" placeholder="Age" className={classes.input} />
+              <FormControl fullWidth className={classes.input} error={formik.touched.gender && Boolean(formik.errors.gender)}>
+                <Select name="gender" value={formik.values.gender} onChange={formik.handleChange} displayEmpty>
+                  <MenuItem value="" disabled>Select Gender</MenuItem>
                   {Object.values(Gender).map((gender) => (
-                    <MenuItem key={gender} value={gender}>
-                      {gender}
-                    </MenuItem>
+                    <MenuItem key={gender} value={gender}>{gender}</MenuItem>
                   ))}
                 </Select>
+                {formik.touched.gender && formik.errors.gender && (
+                  <Typography variant="body2" color="error" className={classes.errorMessage}>
+                    {formik.errors.gender}
+                  </Typography>
+                )}
               </FormControl>
             </Box>
 
             <Box className={classes.row}>
-              <ClinicTextField
-                ref={dateRef}
-                type="date"
-                name="Date"
-                placeholder="dd-mm-yyyy"
-                value={formik.values.Date}
-                onChange={(e) => formik.setFieldValue("Date", e.target.value)}
-                className={classes.input}
-              />
-              <FormControl fullWidth className={classes.input}>
-                <Select
-                  name="Time"
-                  value={formik.values.Time}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  displayEmpty
-                >
-                  <MenuItem value="" disabled>
-                    --:-- --
-                  </MenuItem>
+              <ClinicTextField inputRef={dateRef} type="text" name="date" placeholder="dd-mm-yyyy" className={classes.input} />
+              <FormControl fullWidth className={classes.input} error={formik.touched.time && Boolean(formik.errors.time)}>
+                <Select name="time" value={formik.values.time} displayEmpty onBlur={formik.handleBlur} onChange={formik.handleChange}>
+                  <MenuItem value="" disabled>--:-- --</MenuItem>
                   {availableTimes.map((time) => (
-                    <MenuItem key={time} value={time}>
-                      {time}
-                    </MenuItem>
+                    <MenuItem key={time} value={time}>{time}</MenuItem>
                   ))}
                 </Select>
+                {formik.touched.time && formik.errors.time && (
+                  <Typography variant="body2" color="error" className={classes.errorMessage}>
+                    {formik.errors.time}
+                  </Typography>
+                )}
               </FormControl>
             </Box>
 
             <Box className={classes.symptomsBox}>
-              <ClinicTextField
-                type="text"
-                name="Symptoms"
-                placeholder="Describe the symptoms you are experiencing..."
-                multiline
-                rows={3}
-                className={classes.input}
-              />
+              <ClinicTextField type="text" name="symptoms" placeholder="Describe the symptoms you are experiencing..." multiline rows={3} className={classes.input} />
             </Box>
 
             <Button type="submit" variant="contained" className={classes.submitButton}>
@@ -160,9 +145,9 @@ const BookComponent: React.FC = () => {
   );
 };
 
-const withRoutHOC = routeHOC({
+const withRouteHOC = routeHOC({
   title: "bookcomponent",
   pageAccessName: "add-booking",
 });
 
-export default withRoutHOC(BookComponent);
+export default withRouteHOC(BookComponent);
