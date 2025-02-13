@@ -7,9 +7,9 @@ export enum CardLabel {
 export const cardDetails: {
   [key in CardLabel]: { image: string; alt: string }
 } = {
-  [CardLabel.Pending]: { image: "Blue-Clock.svg", alt: "clock" },
-  [CardLabel.Confirmed]: { image: "Blue-Check.svg", alt: "check" },
-  [CardLabel.Appointments]: { image: "Blue-Calendar.svg", alt: "calendar" },
+  [CardLabel.Pending]: { image: "/public/Blue-Clock.svg", alt: "clock" },
+  [CardLabel.Confirmed]: { image: "/public/Blue-Check.svg", alt: "check" },
+  [CardLabel.Appointments]: { image: "/public/Blue-Calendar.svg", alt: "calendar" },
 };
 
 export interface ICard {

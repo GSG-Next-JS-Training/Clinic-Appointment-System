@@ -5,7 +5,7 @@
   width: 100%;
   flex-direction: column;
   background-size: cover;
-  background-image: url("Doctor-Dashboard-Header.svg");
+  background-image: url("/public/Doctor-Dashboard-Header.svg");
   background-repeat: no-repeat;
 }
 

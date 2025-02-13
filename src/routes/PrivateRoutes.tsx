@@ -1,6 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import GardedRoute from "./gardedRoute";
 import Appointments from "@clinic/pages/appointments/appointments";
+import DoctorDashboard from "@clinic/pages/doctor-dashboard";
 
 const privateRoutes: RouteObject = {
   path: "/clinic",
@@ -11,6 +12,10 @@ const privateRoutes: RouteObject = {
       element: <h1>Landing Page</h1>,
     },
     {
+      path: "doctor-dashboard",
+      element: <DoctorDashboard />,
+    },
+    {
       path: "appointments-dashboard",
       element: <Appointments />,
     },
@@ -18,4 +23,3 @@ const privateRoutes: RouteObject = {
 };
 
 export default privateRoutes;
-

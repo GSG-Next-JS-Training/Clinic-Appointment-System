@@ -17,11 +17,7 @@ const GardedRoute: FC = () => {
       />
     );
 
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  );
+  return <Outlet />;
 };
 
 export default GardedRoute;
