@@ -28,37 +28,32 @@ const LoginComponent: React.FC = () => {
         </Typography>
 
         <FormikProvider value={formik}>
-          <Form className={classes.form}>
+          <Form>
             {!isForgotPassword ? (
-              <>
-                <ClinicTextField
-                  type="text"
-                  name="email"
-                  placeholder="mays@gmail.com"
-                  className={classes.input}
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                />
-
-                <Box className={classes.passwordBox}>
+              <Box className={classes.bottom}>
+                <Box>
+                  <ClinicTextField
+                    type="text"
+                    name="email"
+                    placeholder="example@gmail.com"
+                    className={classes.input}
+                  />
                   <ClinicTextField
                     type="password"
                     name="password"
                     placeholder="Password"
                     className={classes.input}
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
+                    sx={{ mt: 1 }}
                   />
+
+                  <Typography
+                    variant="body2"
+                    className={classes.forgotPassword}
+                    onClick={handleForgotPassword}
+                  >
+                    Forget Password?
+                  </Typography>
                 </Box>
-
-                <Typography
-                  variant="body2"
-                  className={classes.forgotPassword}
-                  onClick={handleForgotPassword}
-                >
-                  Forget Password?
-                </Typography>
-
                 <Button
                   type="submit"
                   variant="contained"
@@ -67,7 +62,7 @@ const LoginComponent: React.FC = () => {
                 >
                   Login
                 </Button>
-              </>
+              </Box>
             ) : (
               <>
                 <ClinicTextField
@@ -92,8 +87,6 @@ const LoginComponent: React.FC = () => {
           </Form>
         </FormikProvider>
       </Box>
-
-      <Box className={classes.imageContainer}></Box>
     </Box>
   );
 };

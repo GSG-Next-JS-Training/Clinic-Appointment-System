@@ -1,9 +1,8 @@
 .wrapper {
-    min-height: 95vh;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: end; 
+    margin-top: 1rem;
 }
 
 .container{

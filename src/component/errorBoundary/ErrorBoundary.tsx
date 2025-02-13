@@ -46,7 +46,7 @@ class ErrorBoundary extends Component <IProps, IState>{
             return (
                 <Box className ={`flexCenter ${classes.wrapper}`}>
                     <ErrorComponent 
-                        imgPath="errorBoundary.gif" 
+                        imgPath="/public/errorBoundary.gif" 
                         altText="Error Boundary" 
                     />
                     <Box className = {`${classes.content} flexCenter`}>
