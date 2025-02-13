@@ -22,7 +22,7 @@ const routeHOC =
 
       if (!hasAccess) return <Navigate to="/access-denied" replace={true} />;
 
-      if (!pageAccessRight) return <Component {...props} />;
+      return <Component {...props} />;
     };
 
     return WrappedComponent;

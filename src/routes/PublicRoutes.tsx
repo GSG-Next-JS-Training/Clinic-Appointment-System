@@ -2,6 +2,7 @@ import { RouteObject } from "react-router-dom";
 import TestComponent from "@clinic/test-component";
 import ForbiddenComponent from "@clinic/pages/forbidden";
 import Unauthenticated from "@clinic/pages/unauthenticated";
+import Login from "@clinic/pages/Login/Login";
 import PageNotFound from "@clinic/pages/pageNotFound";
 
 const publicRoutes: RouteObject = {
@@ -9,7 +10,7 @@ const publicRoutes: RouteObject = {
   children: [
     {
       index: true,
-      element: <h1>Login Page</h1>,
+      element: <Login/>,
     },
     {
       path: "unauthorized",

@@ -5,10 +5,9 @@ export type PageAccessName =
   | "add-booking"
   | "appointments-dashboard"
   | "test-component"
-  | "forbidden-Component"
+  | "forbidden-component"
   | "unauthenticated"
-  | "page-not-found";
-
+  | "login-component";
 
 export interface PageAccessRight {
   roles: UserRole[];
