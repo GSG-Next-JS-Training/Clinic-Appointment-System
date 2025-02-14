@@ -44,14 +44,23 @@ class ErrorBoundary extends Component <IProps, IState>{
     render(){
         if(this.state.hasError){
             return (
-                <Box className ={`flexCenter ${classes.wrapper}`}>
+                <Box 
+                // className ={`flexCenter ${classes.wrapper}`}
+                sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", sm: "column", md: "row" }, 
+                    alignItems: "center", 
+                    justifyContent: "center"
+                    }}>
                     <ErrorComponent 
                         imgPath="/public/errorBoundary.gif" 
                         altText="Error Boundary" 
                     />
                     <Box className = {`${classes.content} flexCenter`}>
                         <Typography> Oops! Something went wrong 😢 </Typography>
-                        <Typography width="50%"> {this.state.errorMessage} </Typography>
+                        <Typography sx = {{
+                            width: { xs: "100%", sm: "100%", md: "50%" }
+                        }}> {this.state.errorMessage} </Typography>
                         <Button 
                         onClick={this.handleRetry} 
                         className = {classes.button}
