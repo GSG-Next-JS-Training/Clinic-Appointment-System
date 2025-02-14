@@ -22,7 +22,18 @@ const ClinicTextField: FC<TextFieldProps> = ({ name, ...rest }) => {
     configTextField.helperText = meta.error;
   }
 
-  return <MuiTextField {...configTextField} />;
+  return (
+    <MuiTextField
+      {...configTextField}
+      sx={{
+        "& .MuiOutlinedInput-root": {
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#3498db",
+          },
+        },
+      }}
+    />
+  );
 };
 
 export default ClinicTextField;

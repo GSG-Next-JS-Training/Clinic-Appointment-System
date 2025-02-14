@@ -12,11 +12,11 @@ const publicRoutes: RouteObject = {
       index: true,
       element: <Login/>,
     },
+
     {
       path: "unauthorized",
       element: <h1>Unauthorized Access</h1>,
-    },
-    {
+    }, {
       path: "unauthenticated",
       element: <Unauthenticated />,
     },
