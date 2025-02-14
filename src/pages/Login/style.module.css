@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7fa;
+  align-items: center;
+  background: url("../../assets/loginImage.jpg") no-repeat center center;
+}
+
+.loginBox {
+  width: 25%;
+  background-color: transparent;
+  padding: 40px;
+  margin-left: 12%;
+  border-radius: 20px;
+  height: 60%;
+  border: 1px solid #3498db;
+}
+
+.loginBox .title {
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #000;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 12px;
+  padding-right: 40px;
+}
+
+.forgotPassword {
+  color: black;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: left !important;
+}
+
+.submitButton {
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submitButton:hover {
+  background-color: #2980b9;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 350px;
+  height: 100%;
+}
