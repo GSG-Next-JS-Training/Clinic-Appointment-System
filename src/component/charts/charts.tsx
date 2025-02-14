@@ -1,7 +1,7 @@
 import React from "react";
 import ClinicPieChart from "../pie-chart";
 import ClinicBarChart from "../bar-chart";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 
 const Charts = () => {
   return (

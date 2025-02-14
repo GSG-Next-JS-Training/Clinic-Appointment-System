@@ -1,6 +1,7 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { Box, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 export default function ClinicPieChart() {
   return (
