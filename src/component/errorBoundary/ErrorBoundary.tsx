@@ -51,7 +51,7 @@ class ErrorBoundary extends Component <IProps, IState>{
                     />
                     <Box className = {`${classes.content} flexCenter`}>
                         <Typography> Oops! Something went wrong 😢 </Typography>
-                        <Typography> {this.state.errorMessage} </Typography>
+                        <Typography width="50%"> {this.state.errorMessage} </Typography>
                         <Button 
                         onClick={this.handleRetry} 
                         className = {classes.button}

@@ -6,21 +6,12 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Avatar from "@mui/material/Avatar";
-import createTheme from "@mui/material/styles/createTheme";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import { Tooltip } from "@mui/material";
-
-const theme = createTheme({
-  typography: {
-    fontFamily: "Poppins, sans-serif",
-  },
-});
 
 export default function Navbar() {
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+      <Box sx={{ flexGrow: 1}}>
+        <AppBar position="static" sx={{ backgroundColor: "#4fc3f7" }}>
           <Toolbar>
             <Avatar
               alt="Clinic Logo"
@@ -32,7 +23,7 @@ export default function Navbar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Clinic Appointment System
             </Typography>
-            <Tooltip title="Logout" >
+            <Tooltip title="Logout">
               <IconButton color="inherit" aria-label="logout">
                 <LogoutIcon />
               </IconButton>
@@ -40,6 +31,5 @@ export default function Navbar() {
           </Toolbar>
         </AppBar>
       </Box>
-    </ThemeProvider>
   );
 }
