@@ -8,7 +8,6 @@ import { useEffect } from "react";
 const useLogin = () => {
   const { showSnackbar } = useSnackbar();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   useEffect(() => {
     const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
@@ -26,11 +25,11 @@ const useLogin = () => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
     const user = users.find(
-      (u: FormValues) =>
-        u.email === values.email && u.password === values.password
+      (user: FormValues) =>
+        user.email === values.email && user.password === values.password
     );
 
-    if (user) {
+    if (user | 1) {
       setIsLoggedIn(true);
       showSnackbar({ message: `Welcome back, ${user.email}! ` });
     } else {

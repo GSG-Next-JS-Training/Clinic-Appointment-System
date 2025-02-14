@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import classes from "./style.module.css"; 
+import classes from "./style.module.css";
 import { CardLabel, ICard } from "@clinic/types/header-card";
 import { createHeaderCard } from "@clinic/utils/header-card";
 import HeaderCard from "@clinic/component/headerCard-component";
@@ -21,8 +21,7 @@ const Header = () => {
             image={card.image}
             label={card.label}
             alt={card.alt}
-          >
-          </HeaderCard>
+          />
         ))}
       </Box>
     </Box>

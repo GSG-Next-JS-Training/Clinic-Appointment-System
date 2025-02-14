@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 export default function ClinicPieChart() {
   return (
     <Box>
-      <Typography variant="h5" textAlign={"center"} fontWeight="bold">
+      <Typography variant="h5" textAlign="center" ml={-5} fontWeight="bold">
         Daily Appointment Status
       </Typography>
       <PieChart
