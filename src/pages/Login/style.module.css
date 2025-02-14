@@ -34,7 +34,7 @@
 }
 
 .submitButton {
-  background-color: #87BFF7;
+  background-color: #87BFF7 !important;
   color: white;
   font-weight: bold;
   border-radius: 10px;
