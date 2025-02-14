@@ -9,7 +9,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main style={{ padding: "20px" }}>{children}</main>
+      <main>{children}</main>
     </>
   );
 };
