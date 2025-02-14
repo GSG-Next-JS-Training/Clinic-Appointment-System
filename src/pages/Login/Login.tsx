@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import classes from "./style.module.css";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
+import { Stack } from "@mui/material";
 
 const LoginComponent: React.FC = () => {
   const { formik } = useLogin();
@@ -22,7 +23,10 @@ const LoginComponent: React.FC = () => {
 
   return (
     <Box className={classes.container}>
-      <Box className={classes.loginBox}>
+      <Box
+        className={classes.loginBox}
+        sx={{ justifyContent: { sm: "center" },width:{sm:"70%",md:"20%"} }}
+      >
         <Typography variant="h5" className={classes.title}>
           {isForgotPassword ? "Forgot Password" : "Login"}
         </Typography>
@@ -31,29 +35,31 @@ const LoginComponent: React.FC = () => {
           <Form>
             {!isForgotPassword ? (
               <Box className={classes.bottom}>
-                <Box>
+                <Stack sx={{ gap: 2, width: "100%" }}>
                   <ClinicTextField
                     type="text"
                     name="email"
                     placeholder="example@gmail.com"
                     className={classes.input}
                   />
-                  <ClinicTextField
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className={classes.input}
-                    sx={{ mt: 1 }}
-                  />
+                  <Box>
+                    <ClinicTextField
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      className={classes.input}
+                    />
 
-                  <Typography
-                    variant="body2"
-                    className={classes.forgotPassword}
-                    onClick={handleForgotPassword}
-                  >
-                    Forget Password?
-                  </Typography>
-                </Box>
+                    <Typography
+                      variant="body2"
+                      className={classes.forgotPassword}
+                      onClick={handleForgotPassword}
+                      mt={1}
+                    >
+                      Forget Password?
+                    </Typography>
+                  </Box>
+                </Stack>
                 <Button
                   type="submit"
                   variant="contained"
