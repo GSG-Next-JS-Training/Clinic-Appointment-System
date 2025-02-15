@@ -5,10 +5,10 @@ export const useGridData = () => {
   const { showSnackbar } = useSnackbar();
   const { state, updateRows } = useGrid();
   const { columns, rows, filters } = state;
-
+  
   const filteredRows = rows.filter((row) => {
     const nameMatches = filters.name
-      ? row.patientName
+      ? row.name
           .toLowerCase()
           .trim()
           .includes(filters.name.toLowerCase().trim())
@@ -19,10 +19,13 @@ export const useGridData = () => {
   });
 
   const handleRowUpdate = (updatedRow: any) => {
-    if (!updatedRow.review.trim()) {
+    const checkRow = rows.find((row) => row.id === updatedRow.id);
+    if (!checkRow) {
+      return;
+    }
+    if(updatedRow.review !== checkRow.review && !updatedRow.review.trim()){
       throw new Error("Review cannot be empty");
     }
-    const checkRow = rows.find((row) => row.id === updatedRow.id);
     if (checkRow && JSON.stringify(checkRow) === JSON.stringify(updatedRow)) {
       return updatedRow;
     }
@@ -33,7 +36,6 @@ export const useGridData = () => {
     showSnackbar({
       message: "Row Updated successfully",
       severity: "success",
-      variant: "outlined",
     });
     return updatedRow;
   };

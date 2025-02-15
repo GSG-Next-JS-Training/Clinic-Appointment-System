@@ -26,6 +26,17 @@ const Grid: FC = () => {
             backgroundColor: "#eceff1",
             fontSize: "16px",
             fontWeight: "bolder",
+            textAlign: "center",
+          },
+          "& .MuiDataGrid-columnHeaderTitleContainer": {
+            display: "flex",
+            justifyContent: "center",
+          },
+          "& .MuiDataGrid-cell": {
+            display: "flex",
+            justifyContent: "center", 
+            alignItems: "center", 
+            textAlign: "center", 
           },
         }}
         initialState={{

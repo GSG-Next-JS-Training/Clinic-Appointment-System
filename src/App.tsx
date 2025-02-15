@@ -1,26 +1,39 @@
 import "./App.css";
 import Snackbar from "./component/snackbar/Snackbar";
 import AppRoutes from "./routes/AppRoutes";
-import { UserGender, UserRole } from "./types/user";
+import { IUser, UserGender, UserRole } from "./types/user";
 
 function App() {
 
   
-  // Example usage:
-  const newUser = {
+  const addUserToLocalStorage = (user: IUser) => {
+    // Retrieve existing users from local storage
+    let users: IUser[] = JSON.parse(localStorage.getItem("users") || "[]");
+  
+    // Add the new user to the array
+    users.push(user);
+  
+    // Save the updated array back to local storage
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+  
+  // Example user
+  const newUser: IUser = {
     name: "John Doe",
-    email: "johndoe1@example.com",
-    password: "securepassword",
-    confirmPassword: "securepassword",
-    contact: "1234567890",
-    role: "Patient", // Assuming "Doctor" is a valid UserRole excluding "Admin"
+    email: "johndoe@example.com",
+    password: "securePass123",
+    confirmPassword: "securePass123",
+    contact: "123-456-7890",
+    role: "Doctor",
     specialty: "Cardiology",
     gender: "male",
-    age: 35,
+    age: 40,
     illnessLocation: "Heart",
-    report: "No major issues",
+    report: "No significant issues",
   };
-
+  
+  // Add user to local storage
+  addUserToLocalStorage(newUser);
   
   return (
     <>

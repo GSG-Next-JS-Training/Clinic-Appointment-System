@@ -15,7 +15,7 @@ const routeHOC =
     document.title = title;
 
     const WrappedComponent: FC<ComponentProps> = (props) => {
-      const userRole =getLoggedInFromLocalStorage().role
+      const userRole =getLoggedInFromLocalStorage()?.role
 
       if (!pageAccessName) return <Component {...props} />;
 

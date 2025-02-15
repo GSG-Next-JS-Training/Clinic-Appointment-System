@@ -7,7 +7,9 @@ import {
   hourToMinutes,
 } from "@clinic/utils";
 import { INITAIL_VALUES } from "../constant";
-import { FormValues } from "../types";
+import { FormValues, IBook } from "../types";
+import { APPOINTMENT_STATUS } from "@clinic/constant";
+import { getLoggedInFromLocalStorage, setAppointmentInLocalStorage } from "@clinic/utils/local-storage";
 
 const useBook = () => {
   const dateRef = useRef<HTMLInputElement>(null);
@@ -16,7 +18,17 @@ const useBook = () => {
   const formik = useFormik<FormValues>({
     initialValues: INITAIL_VALUES,
     onSubmit: (values, { resetForm }) => {
-      console.log("Booking Submitted:", values);
+      const user = getLoggedInFromLocalStorage();
+      const book:IBook = {
+        id: crypto.randomUUID(),
+        name: user.name,
+        date: values.date,
+        time: values.time,
+        symptoms: values.symptoms,
+        status: APPOINTMENT_STATUS.PENDING,
+        doctor: "Not Assigned",
+      };
+      setAppointmentInLocalStorage(book);
       resetForm();
     },
   });

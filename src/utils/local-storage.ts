@@ -1,4 +1,5 @@
 import { IUser } from "@clinic/types/user";
+import { IBook } from "../pages/booking/types.js";
 
 export const getItemFromLocalStorage = <T>(key: string, defaultValue: T): T => {
   try {
@@ -25,6 +26,7 @@ export const getUsersFromLocalStorage = (): IUser[] => {
 export const setUsersInLocalStorage = (users: IUser[]): void => {
   setItemInLocalStorage("users", users);
 };
+
 export const setLoggedInUserInLocalStorage = (user: IUser): void => {
   setItemInLocalStorage("user", user);
 };
@@ -39,4 +41,18 @@ export const setTokenInLocalStorage = (token) => {
 
 export const getTokenFromLocalStorage = () => {
   return getItemFromLocalStorage<string>("token", undefined);
+};
+
+export const setAppointmentInLocalStorage = (appointment: IBook): void => {
+  const appointments = getAppointmentsFromLocalStorage(); 
+  appointments.push(appointment); 
+  setItemInLocalStorage("appointments", appointments); 
+};
+
+export const updateAppointmentInLocalStorage = (appointments: IBook[]): void => {
+  setItemInLocalStorage("appointments", appointments); 
+};
+
+export const getAppointmentsFromLocalStorage = (): IBook[] => {
+  return getItemFromLocalStorage<IBook[]>("appointments", []);
 };
