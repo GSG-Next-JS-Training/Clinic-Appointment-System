@@ -1,7 +1,7 @@
 import "./App.css";
 import Snackbar from "./component/snackbar/Snackbar";
 import AppRoutes from "./routes/AppRoutes";
-import { IUser, UserGender, UserRole } from "./types/user";
+import { IUser } from "./types/user";
 
 function App() {
 
@@ -20,13 +20,13 @@ function App() {
   // Example user
   const newUser: IUser = {
     name: "John Doe",
-    email: "johndoe@example.com",
+    email: "johndoe3@example.com",
     password: "securePass123",
     confirmPassword: "securePass123",
     contact: "123-456-7890",
-    role: "Doctor",
+    role: "Admin",
     specialty: "Cardiology",
-    gender: "male",
+    gender: "Male",
     age: 40,
     illnessLocation: "Heart",
     report: "No significant issues",

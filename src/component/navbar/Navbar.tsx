@@ -8,6 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Avatar from "@mui/material/Avatar";
 import { Tooltip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { getLoggedInFromLocalStorage } from "@clinic/utils/local-storage";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Navbar() {
     localStorage.removeItem("token");
     navigate("/");
   };
-  
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#87BFF7" }}>
@@ -27,7 +28,10 @@ export default function Navbar() {
               src="/clinic-appointment-system2-high-resolution-logo.png"
               sx={{ height: "50px", width: "50px", mr: 1, cursor: "pointer" }}
               variant="circular"
-              onClick={() => navigate("/clinic/doctor-dashboard")}
+              onClick={() =>
+                getLoggedInFromLocalStorage().role === "Doctor" &&
+                navigate("/clinic/doctor-dashboard")
+              }
             />
           </Tooltip>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

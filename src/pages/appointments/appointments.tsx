@@ -9,10 +9,12 @@ import Container from "@mui/material/Container";
 import Filtering from "@clinic/component/filtering";
 import withNavbar from "@clinic/component/with-navbar/with-navbar";
 import { APPOINTMENT_STATUS } from "@clinic/constant";
-import { getAppointmentsFromLocalStorage, getLoggedInFromLocalStorage, updateAppointmentInLocalStorage } from "@clinic/utils/local-storage";
+import { getLoggedInFromLocalStorage } from "@clinic/utils/local-storage";
+import useAppointments from "@clinic/hooks/useAppointments";
 
 const Appointments: FC = () => {
-  const { init, state } = useGrid();
+  const { init } = useGrid();
+  const { appointments: rows } = useAppointments();
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Patient Name", width: 150 },
@@ -27,27 +29,20 @@ const Appointments: FC = () => {
       valueOptions: Object.values(APPOINTMENT_STATUS),
     },
     { field: "symptoms", headerName: "Symptoms", width: 150 },
-    { field: "doctor", 
-      headerName: "Doctor", 
-      width: 150, 
+    {
+      field: "doctor",
+      headerName: "Doctor",
+      width: 150,
       type: "singleSelect",
       editable: true,
-      valueOptions: [ "Not Assigned" ,getLoggedInFromLocalStorage().name ],
+      valueOptions: ["Not Assigned", getLoggedInFromLocalStorage().name],
     },
     { field: "review", headerName: "Doctor Review", flex: 1, editable: true },
   ];
 
-  const rows = getAppointmentsFromLocalStorage();
-
   useEffect(() => {
-    if(state.rows.length == 0){
-      init({ rows, columns });
-      return;
-    }
-    updateAppointmentInLocalStorage(state.rows);
-  },
-  [state.rows]
-)
+    init({ rows, columns });
+  }, [rows]);
 
   return (
     <Box className={classes.wrapper}>

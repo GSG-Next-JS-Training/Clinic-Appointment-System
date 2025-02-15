@@ -1,27 +1,18 @@
 import * as React from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
-import { axisClasses } from "@mui/x-charts/ChartsAxis";
-import { dataset, valueFormatter } from "./constant";
+import { valueFormatter } from "./constant";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-
-const chartSetting = {
-  width: 600,
-  height: 400,
-  sx: {
-    [`.${axisClasses.left} .${axisClasses.label}`]: {
-      transform: "translate(-20px, 0)",
-    },
-  },
-};
-const legendItems = [
-  { color: "#79B7F4", label: "Pending" },
-  { color: "#CAE2FB", label: "Completed" },
-  { color: "#3C9EDF", label: "Confirmed" },
-];
+import {
+  chartSetting,
+  legendItems,
+} from "./chart-setting";
+import useAppointments from "@clinic/hooks/useAppointments";
 
 export default function ClinicBarChart() {
+  const { dataset } = useAppointments();
+
   return (
     <Box>
       <Typography variant="h5" textAlign={"center"} fontWeight="bold">

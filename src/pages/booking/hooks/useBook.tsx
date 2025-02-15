@@ -9,17 +9,27 @@ import {
 import { INITAIL_VALUES } from "../constant";
 import { FormValues, IBook } from "../types";
 import { APPOINTMENT_STATUS } from "@clinic/constant";
-import { getLoggedInFromLocalStorage, setAppointmentInLocalStorage } from "@clinic/utils/local-storage";
+import {
+  getAppointmentsFromLocalStorage,
+  getLoggedInFromLocalStorage,
+  setAppointmentInLocalStorage,
+} from "@clinic/utils/local-storage";
+import useSnackbar from "@clinic/hooks/useSnackbar";
+import { validationSchema } from "../validationSchema";
+import useAppointments from "@clinic/hooks/useAppointments";
 
 const useBook = () => {
   const dateRef = useRef<HTMLInputElement>(null);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
+  const { showSnackbar } = useSnackbar();
+  const { updateAppointments } = useAppointments();
 
   const formik = useFormik<FormValues>({
     initialValues: INITAIL_VALUES,
+    validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       const user = getLoggedInFromLocalStorage();
-      const book:IBook = {
+      const book: IBook = {
         id: crypto.randomUUID(),
         name: user.name,
         date: values.date,
@@ -27,15 +37,14 @@ const useBook = () => {
         symptoms: values.symptoms,
         status: APPOINTMENT_STATUS.PENDING,
         doctor: "Not Assigned",
+        gender: user.gender,
       };
       setAppointmentInLocalStorage(book);
+      updateAppointments(getAppointmentsFromLocalStorage());
+      showSnackbar({ message: "Appointment Booked Successfully!" });
       resetForm();
     },
   });
-
-  useEffect(() => {
-    setAvailableTimes(generateTimeSlots());
-  }, []);
 
   useEffect(() => {
     if (formik.values.date) {
@@ -74,12 +83,18 @@ const useBook = () => {
         minDate: todayString,
         onChange: (selectedDates: Date[]) => {
           if (selectedDates.length > 0) {
-            const formattedDate = selectedDates[0].toISOString().split("T")[0];
-            formik.setFieldValue("date", formattedDate);
+            formik.setFieldValue(
+              "date",
+              selectedDates[0].toLocaleDateString("en-CA")
+            );
           }
         },
       });
     }
+  }, []);
+
+  useEffect(() => {
+    setAvailableTimes(generateTimeSlots());
   }, []);
 
   return { formik, availableTimes, dateRef };

@@ -1,4 +1,5 @@
 import { APPOINTMENT_STATUS } from "@clinic/constant";
+import { UserGender } from "@clinic/types/user";
 
 export interface FormValues {
   date: string;
@@ -20,4 +21,5 @@ export interface IBook{
   symptoms?: string;
   doctor?: string;
   review?: string;
+  gender?:UserGender
 }

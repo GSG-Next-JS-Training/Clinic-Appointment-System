@@ -27,7 +27,7 @@ const BookComponent: React.FC = () => {
             <Box className={classes.row}>
               <ClinicTextField
                 inputRef={dateRef}
-                type="text"
+                type="date"
                 name="date"
                 placeholder="dd-mm-yyyy"
                 className={classes.input}

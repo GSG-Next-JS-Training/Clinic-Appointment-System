@@ -28,7 +28,7 @@ const HeaderCard: React.FC<IProps> = (props: IProps) => {
         sx={{ cursor: props.label === CardLabel.Appointments ? "pointer" : "" }}
         onClick={() => navigate("/clinic/appointments-dashboard")}
       >
-        <Box className={classes.cardNumber}>{props.count}</Box>
+        <Box className={classes.cardNumber}>{props.count || 0}</Box>
         <Box className={classes.cardText}>{props.label}</Box>
       </Box>
     </Box>

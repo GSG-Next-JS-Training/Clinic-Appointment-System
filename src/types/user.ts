@@ -1,6 +1,6 @@
 export type UserRole = "Admin" | "Doctor" | "Patient";
 
-export type UserGender = "male" | "female";
+export type UserGender = "Male" | "Female";
 
 export interface IUser {
   name: string;
