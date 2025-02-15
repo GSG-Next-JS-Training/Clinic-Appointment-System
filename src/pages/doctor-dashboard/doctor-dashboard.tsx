@@ -1,7 +1,7 @@
 import React from "react";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
-import Header from "@clinic/component/header-component";
 import Charts from "@clinic/component/charts";
+import Header from "@clinic/component/doctor-dashboad-header";
 
 const DoctorDashboard: React.FC = () => {
   return (

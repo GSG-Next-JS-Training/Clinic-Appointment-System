@@ -5,7 +5,7 @@ import ErrorComponent from "@clinic/component/error-component";
 const pageNotFound: FC = () => {
     return (
         <ErrorComponent
-            imgPath="404-Error.gif"
+            imgPath="/public/404-Error.gif"
             altText="Page Not Found"
         />
     );

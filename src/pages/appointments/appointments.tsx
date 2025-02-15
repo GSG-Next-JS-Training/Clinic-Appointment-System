@@ -7,12 +7,12 @@ import Box from "@mui/material/Box";
 import classes from "./style.module.css";
 import Container from "@mui/material/Container";
 import Filtering from "@clinic/component/filtering";
-import { APPOINTMENT_STATUS } from "@clinic/constant.js";
 import withNavbar from "@clinic/component/with-navbar/with-navbar";
+import { APPOINTMENT_STATUS } from "@clinic/constant";
 
 const Appointments: FC = () => {
   const { init } = useGrid();
-
+    
   const columns: GridColDef[] = [
     { field: "patientName", headerName: "Name", width: 150 },
     { field: "date", headerName: "Date", type: "string", width: 150 },

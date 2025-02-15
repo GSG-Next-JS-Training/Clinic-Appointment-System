@@ -1,6 +1,7 @@
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
 import AdminForm from "./component/admin-form";
 import Header from "./component/form-header";
+import withNavbar from "@clinic/component/with-navbar";
 
 const UserManagement: React.FC = () => {
     return (
@@ -15,4 +16,4 @@ const withRoutHOC = routeHOC({
     pageAccessName: "user-management",
 });
 
-export default withRoutHOC(UserManagement);
+export default withNavbar(withRoutHOC(UserManagement));

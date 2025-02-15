@@ -1,4 +1,4 @@
-import { UserGender, UserType } from "@clinic/types/user";
+import { UserGender, UserRole } from "@clinic/types/user";
 import { FormValues } from "./types";
 
 export const INITIAL_VALUES: FormValues = {
@@ -7,14 +7,14 @@ export const INITIAL_VALUES: FormValues = {
   password: "",
   confirmPassword: "",
   contact: "",
-  role: "patient", 
-  specialty: "",   
-  gender: "male",      
+  role: "Patient",
+  specialty: "",
+  gender: "male",
   age: 0,
   illnessLocation: "",
-  report: "", 
+  report: "",
 };
 
-export const typeOptions: UserType[] = ["patient", "doctor"];  
+export const typeOptions: Exclude<UserRole, "Admin">[] = ["Doctor", "Patient"];
 
 export const genderOptions: UserGender[] = ["male", "female"];

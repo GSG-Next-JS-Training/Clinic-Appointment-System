@@ -11,7 +11,7 @@ import { useSearchParams } from "react-router-dom";
 import { APPOINTMENT_STATUS } from "@clinic/constant.js";
 
 const Filtering: FC = () => {
-  const { state, setFilter } = useGrid();
+  const { setFilter } = useGrid();
   const [params, setParams] = useSearchParams();
   const [name, setName] = useState(params.get("name") || "");
   const [status, setStatus] = useState(params.get("status") || "All");
@@ -25,7 +25,7 @@ const Filtering: FC = () => {
     }
     params.set("status", status);
     setParams(params);
-  }, [state, name, status]);
+  }, [name, status]);
 
   return (
     <Box

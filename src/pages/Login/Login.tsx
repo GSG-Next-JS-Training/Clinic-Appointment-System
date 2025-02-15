@@ -9,9 +9,10 @@ import classes from "./style.module.css";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
 import { Stack } from "@mui/material";
 import { Navigate } from "react-router-dom";
+import { USER_ROLES } from "@clinic/constant";
 
 const LoginComponent: React.FC = () => {
-  const { formik, isLoggedIn } = useLogin();
+  const { formik, userRole } = useLogin();
   const [isForgotPassword, setIsForgotPassword] = useState(false);
 
   const handleForgotPassword = () => {
@@ -24,9 +25,15 @@ const LoginComponent: React.FC = () => {
 
   return (
     <Box className={classes.container}>
-      {isLoggedIn ? (
+      {userRole ? (
         <Navigate
-          to="/clinic/doctor-dashboard"
+          to={
+            userRole === USER_ROLES.PATIENT
+              ? "/clinic/add-booking"
+              : userRole === USER_ROLES.ADMIN
+              ? "/clinic/user-management"
+              : "/clinic/doctor-dashboard"
+          }
           replace
           state={{ from: location.pathname }}
         />
@@ -87,17 +94,21 @@ const LoginComponent: React.FC = () => {
                     placeholder="Enter your email"
                     className={classes.input}
                   />
-                  <Button variant="contained" className={classes.submitButton2}>
-                    Send Reset Link
-                  </Button>
-
                   <Typography
                     variant="body2"
                     className={classes.forgotPassword}
                     onClick={handleBackToLogin}
+                    mt={1}
                   >
-                    Back to Login
+                    Back to Login!
                   </Typography>
+                  <Button
+                    variant="contained"
+                    className={classes.submitButton}
+                    sx={{ my: 3 }}
+                  >
+                    Send Reset Link
+                  </Button>
                 </>
               )}
             </Form>

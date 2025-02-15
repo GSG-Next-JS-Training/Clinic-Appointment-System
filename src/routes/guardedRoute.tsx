@@ -1,12 +1,12 @@
+import { getTokenFromLocalStorage } from "@clinic/utils/local-storage";
 import { FC } from "react";
 import { Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import Layout from "@clinic/component/navbar/layout";
 
-const GardedRoute: FC = () => {
+const GuardedRoute: FC = () => {
   const location = useLocation();
-  const token = localStorage.getItem("token");
+  const token = getTokenFromLocalStorage();
 
   if (!token)
     return (
@@ -20,4 +20,4 @@ const GardedRoute: FC = () => {
   return <Outlet />;
 };
 
-export default GardedRoute;
+export default GuardedRoute;

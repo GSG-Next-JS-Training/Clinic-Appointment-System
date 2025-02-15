@@ -3,16 +3,16 @@ import { useFormik } from "formik";
 import { FormValues } from "../types";
 import { INITIAL_VALUES } from "../constant";
 import { validationSchema } from "../validationSchema";
-import { getUserFromLocalStorage, setUserInLocalStorage } from "@clinic/utils/local-storage";
 import { IUser } from "@clinic/types/user";
+import { getUsersFromLocalStorage, setUsersInLocalStorage } from "@clinic/utils/local-storage";
 
 const useUserManagement = () => {
   const { showSnackbar } = useSnackbar();
 
-  const add = (values:FormValues) => {
-    const users:IUser[]=getUserFromLocalStorage();
-    setUserInLocalStorage([...users,values]);
-    showSnackbar({ message: "success" });
+  const add = (values: FormValues) => {
+    const users: IUser[] = getUsersFromLocalStorage();
+    setUsersInLocalStorage([...users, values]);
+    showSnackbar({ message: "The user added successfully😁" });
   };
 
   const formik = useFormik<FormValues>({
@@ -21,11 +21,11 @@ const useUserManagement = () => {
       add(values);
       resetForm();
     },
-    validationSchema:validationSchema,
-    validateOnMount:true
+    validationSchema: validationSchema,
+    validateOnMount: true,
   });
 
-  return {formik};
+  return { formik };
 };
 
 export default useUserManagement;

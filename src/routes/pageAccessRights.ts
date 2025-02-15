@@ -4,11 +4,23 @@ const pageAccessRights = new Map<PageAccessName, PageAccessRight>([
   [
     "doctor-dashboard",
     {
-      roles: ["Admin"],
+      roles: ["Doctor"],
     },
   ],
   [
     "appointments-dashboard",
+    {
+      roles: ["Doctor"],
+    },
+  ],
+  [
+    "add-booking",
+    {
+      roles: ["Patient"],
+    },
+  ],
+  [
+    "user-management",
     {
       roles: ["Admin"],
     },

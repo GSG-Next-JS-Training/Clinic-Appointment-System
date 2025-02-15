@@ -1,25 +1,21 @@
 import { RouteObject } from "react-router-dom";
-import GardedRoute from "./gardedRoute";
-import Appointments from "@clinic/pages/appointments/appointments";
+import Appointments from "@clinic/pages/appointments";
 import DoctorDashboard from "@clinic/pages/doctor-dashboard";
 import UserManagement from "@clinic/pages/user-management";
-import BookAnAppointment from "@clinic/Book-an-appointment";
+import Booking from "@clinic/pages/booking";
+import GuardedRoute from "./guardedRoute";
 
 const privateRoutes: RouteObject = {
   path: "/clinic",
-  element: <GardedRoute />,
+  element: <GuardedRoute />,
   children: [
     {
       index: true,
       element: <h1>Landing Page</h1>,
     },
     {
-      path: "doctor-dashboard",
-      element: <DoctorDashboard />,
-    },
-    {
       path: "add-booking",
-      element: <BookAnAppointment />,
+      element: <Booking />,
     },
     {
       path: "appointments-dashboard",

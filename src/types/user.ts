@@ -1,19 +1,17 @@
-export type UserRole = "Admin" | "User";
+export type UserRole = "Admin" | "Doctor" | "Patient";
 
 export type UserGender = "male" | "female";
 
-export type UserType = "patient" | "doctor";
-
 export interface IUser {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    contact: string;
-    role: UserType;
-    specialty: string;
-    gender: UserGender;
-    age: number;
-    illnessLocation: string;
-    report: string;
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  contact: string;
+  role: Exclude<UserRole, "Admin">;
+  specialty: string;
+  gender: UserGender;
+  age: number;
+  illnessLocation: string;
+  report: string;
 }

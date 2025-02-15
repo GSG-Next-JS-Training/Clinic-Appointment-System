@@ -2,39 +2,35 @@ import { useFormik } from "formik";
 import { loginValidationSchema } from "../validationSchema";
 import { FormValues } from "../types";
 import useSnackbar from "@clinic/hooks/useSnackbar";
+import {
+  getUsersFromLocalStorage,
+  setLoggedInUserInLocalStorage,
+  setTokenInLocalStorage,
+} from "@clinic/utils/local-storage";
+import { UserRole } from "@clinic/types/user";
 import { useState } from "react";
-import { useEffect } from "react";
+import { generateAccessToken } from "@clinic/utils";
 
 const useLogin = () => {
   const { showSnackbar } = useSnackbar();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
-
-    if (existingUsers.length === 0) {
-      const defaultUsers = [
-        { email: "user1@example.com", password: "Password@123" },
-        { email: "doctor@example.com", password: "Doctor@456" },
-        { email: "patient@example.com", password: "Patient@789" },
-      ];
-      localStorage.setItem("users", JSON.stringify(defaultUsers));
-    }
-  }, []);
+  const [userRole, setUserRole] = useState<UserRole>(undefined);
 
   const handleLogin = (values: FormValues) => {
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const existingUsers = getUsersFromLocalStorage();
 
-    const user = users.find(
+    const user = existingUsers.find(
       (user: FormValues) =>
         user.email === values.email && user.password === values.password
     );
 
-    if (user | 1) {
-      setIsLoggedIn(true);
-      showSnackbar({ message: `Welcome back, ${user.email}! ` });
+    if (user) {
+      setUserRole(user.role);
+      setLoggedInUserInLocalStorage(user);
+      setTokenInLocalStorage(generateAccessToken());
+      showSnackbar({ message: `Welcome back, ${user.name}😁!.` });
     } else {
       showSnackbar({
-        message: "Invalid email or password. Please try again.",
+        message: "Invalid email or password. Please try again😊.",
         severity: "error",
       });
     }
@@ -52,7 +48,7 @@ const useLogin = () => {
     validateOnMount: true,
   });
 
-  return { formik, isLoggedIn };
+  return { formik, userRole };
 };
 
 export default useLogin;
