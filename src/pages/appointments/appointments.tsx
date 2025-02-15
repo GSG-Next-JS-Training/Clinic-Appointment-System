@@ -9,10 +9,10 @@ import Container from "@mui/material/Container";
 import Filtering from "@clinic/component/filtering";
 import withNavbar from "@clinic/component/with-navbar/with-navbar";
 import { APPOINTMENT_STATUS } from "@clinic/constant";
-import { getAppointmentsFromLocalStorage, getLoggedInFromLocalStorage } from "@clinic/utils/local-storage";
+import { getAppointmentsFromLocalStorage, getLoggedInFromLocalStorage, updateAppointmentInLocalStorage } from "@clinic/utils/local-storage";
 
 const Appointments: FC = () => {
-  const { init } = useGrid();
+  const { init, state } = useGrid();
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Patient Name", width: 150 },
@@ -39,9 +39,14 @@ const Appointments: FC = () => {
 
   const rows = getAppointmentsFromLocalStorage();
 
-  useEffect(() => 
-    init({ rows, columns }), 
-  []
+  useEffect(() => {
+    if(state.rows.length == 0){
+      init({ rows, columns });
+      return;
+    }
+    updateAppointmentInLocalStorage(state.rows);
+  },
+  [state.rows]
 )
 
   return (
