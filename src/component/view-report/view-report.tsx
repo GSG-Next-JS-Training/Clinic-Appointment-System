@@ -1,4 +1,3 @@
-// @ts-ignore
 import DocumentViewer from "@txtextcontrol/tx-react-ds-document-viewer";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import DialogContent from "@mui/material/DialogContent";

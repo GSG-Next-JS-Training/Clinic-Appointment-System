@@ -24,10 +24,10 @@ function App() {
     password: "securePass123",
     confirmPassword: "securePass123",
     contact: "123-456-7890",
-    role: "Admin",
+    role: "Doctor",
     specialty: "Cardiology",
     gender: "Male",
-    age: 40,
+    birthdate:"",
     illnessLocation: "Heart",
     report: "No significant issues",
   };

@@ -38,6 +38,7 @@ const useBook = () => {
         status: APPOINTMENT_STATUS.PENDING,
         doctor: "Not Assigned",
         gender: user.gender,
+        report:user.report,
       };
       setAppointmentInLocalStorage(book);
       updateAppointments(getAppointmentsFromLocalStorage());

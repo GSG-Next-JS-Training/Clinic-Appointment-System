@@ -21,5 +21,6 @@ export interface IBook{
   symptoms?: string;
   doctor?: string;
   review?: string;
-  gender?:UserGender
+  gender?:UserGender;
+  report?:string;
 }
