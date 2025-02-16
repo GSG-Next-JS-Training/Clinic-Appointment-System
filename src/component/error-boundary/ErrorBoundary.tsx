@@ -45,7 +45,6 @@ class ErrorBoundary extends Component <IProps, IState>{
         if(this.state.hasError){
             return (
                 <Box 
-                // className ={`flexCenter ${classes.wrapper}`}
                 sx={{
                     display: "flex",
                     flexDirection: { xs: "column", sm: "column", md: "row" }, 
