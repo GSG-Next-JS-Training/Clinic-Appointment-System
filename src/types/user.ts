@@ -11,7 +11,7 @@ export interface IUser {
   role: Exclude<UserRole, "Admin">;
   specialty: string;
   gender: UserGender;
-  age: number;
+  birthdate: string;
   illnessLocation: string;
   report: string;
 }

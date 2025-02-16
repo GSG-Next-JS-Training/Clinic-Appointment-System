@@ -37,7 +37,7 @@ const AdminForm: React.FC = () => {
         <ClinicTextField
           type="date"
           label="Birthdate"
-          name="Birthdate"
+          name="birthdate"
           slotProps={{
             inputLabel: {
               shrink: true,

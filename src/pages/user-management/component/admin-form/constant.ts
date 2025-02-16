@@ -9,12 +9,12 @@ export const INITIAL_VALUES: FormValues = {
   contact: "",
   role: "Patient",
   specialty: "",
-  gender: "male",
-  age: 0,
+  gender: "Male",
+  birthdate: "",
   illnessLocation: "",
   report: "",
 };
 
 export const typeOptions: Exclude<UserRole, "Admin">[] = ["Doctor", "Patient"];
 
-export const genderOptions: UserGender[] = ["male", "female"];
+export const genderOptions: UserGender[] = ["Male", "Female"];

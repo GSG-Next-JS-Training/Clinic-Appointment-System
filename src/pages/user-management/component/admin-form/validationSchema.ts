@@ -31,7 +31,7 @@ export const validationSchema = Yup.object({
     then: (schema) => schema.required("Illness location is required"),
   }),
 
-  Birthdate: Yup.date()
+  birthdate: Yup.date()
     .max(new Date(), "Birthdate cannot be in the future")
     .required("Birthdate is required"),
 });
