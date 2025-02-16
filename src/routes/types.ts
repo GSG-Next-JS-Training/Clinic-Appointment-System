@@ -1,6 +1,7 @@
 import { UserRole } from "@clinic/types/user";
 
 export type PageAccessName =
+  | "about"
   | "doctor-dashboard"
   | "add-booking"
   | "appointments-dashboard"

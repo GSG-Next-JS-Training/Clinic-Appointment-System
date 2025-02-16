@@ -1,0 +1,19 @@
+.wrapper{
+    background: url('@clinic/assets/hero.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.p{
+    font-size: 25px;
+}
