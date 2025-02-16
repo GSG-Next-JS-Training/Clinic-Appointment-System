@@ -17,6 +17,7 @@
     "@mui/material": "^6.4.2",
     "@mui/x-charts": "^7.26.0",
     "@mui/x-data-grid": "^7.25.0",
+    "@txtextcontrol/tx-react-document-viewer": "^32.2.2",
     "@types/yup": "^0.32.0",
     "flatpickr": "^4.6.13",
     "formik": "^2.4.6",
