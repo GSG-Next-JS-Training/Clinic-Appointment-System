@@ -6,7 +6,6 @@ import {
   getLoggedInFromLocalStorage,
 } from "@clinic/utils/local-storage";
 
-
 const routeHOC =
   <ComponentProps extends object>(configs: RouteConfigs) =>
   (Component: ComponentType<ComponentProps>) => {

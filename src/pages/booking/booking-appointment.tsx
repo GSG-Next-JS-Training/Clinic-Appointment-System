@@ -36,6 +36,7 @@ const BookComponent: React.FC = () => {
                 fullWidth
                 className={classes.input}
                 error={formik.touched.time && Boolean(formik.errors.time)}
+                disabled={formik.values.date === ""}
               >
                 <Select
                   name="time"
@@ -79,9 +80,23 @@ const BookComponent: React.FC = () => {
             <Button
               type="submit"
               variant="contained"
-              className={classes.submitButton}
+              sx={{
+                padding: "10px 40px ",
+                color: "white",
+                borderRadius: "5px",
+                backgroundColor: "#1A76D1",
+                border: "1px solid #ffffff",
+                transition: "0.3 ease all",
+                textTransform: "capitalize",
+                "&:hover": {
+                  backgroundColor: "white",
+                  border: "2px solid #1A76D1",
+                  color: "#1A76D1",
+                },
+              }}
+              fullWidth
             >
-              Book An Appointment
+              Book
             </Button>
           </Form>
         </FormikProvider>

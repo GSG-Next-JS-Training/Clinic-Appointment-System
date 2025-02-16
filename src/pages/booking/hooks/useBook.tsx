@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import { useFormik } from "formik";
-import {
-  generateTimeSlots,
-  getCurrentTimeInMinutes,
-  hourToMinutes,
-} from "@clinic/utils";
+import { generateTimeSlots } from "@clinic/utils";
 import { INITAIL_VALUES } from "../constant";
 import { FormValues, IBook } from "../types";
 import { APPOINTMENT_STATUS } from "@clinic/constant";
@@ -20,9 +16,11 @@ import useAppointments from "@clinic/hooks/useAppointments";
 
 const useBook = () => {
   const dateRef = useRef<HTMLInputElement>(null);
-  const [availableTimes, setAvailableTimes] = useState<string[]>([]);
+  const [availableTimes, setAvailableTimes] = useState<string[]>(
+    generateTimeSlots()
+  );
   const { showSnackbar } = useSnackbar();
-  const { updateAppointments } = useAppointments();
+  const { updateAppointments, appointments } = useAppointments();
 
   const formik = useFormik<FormValues>({
     initialValues: INITAIL_VALUES,
@@ -38,41 +36,28 @@ const useBook = () => {
         status: APPOINTMENT_STATUS.PENDING,
         doctor: "Not Assigned",
         gender: user.gender,
-        report:user.report,
+        report: user.report,
       };
       setAppointmentInLocalStorage(book);
       updateAppointments(getAppointmentsFromLocalStorage());
-      showSnackbar({ message: "Appointment Booked Successfully!" });
+      showSnackbar({
+        message: "Appointment Booked Successfully!",
+        severity: "success",
+      });
       resetForm();
     },
   });
 
   useEffect(() => {
-    if (formik.values.date) {
-      const today = new Date();
-      const existingBookings = JSON.parse(
-        localStorage.getItem("bookings") || "[]"
-      );
+    const bookedTimes = appointments
+      .filter((appointment) => appointment.date === formik.values.date)
+      .map((appointment) => appointment.time);
 
-      const bookedTimes = existingBookings
-        .filter((booking) => booking.date === formik.values.date)
-        .map((booking) => booking.time);
+    const freeTimes = availableTimes.filter(
+      (time) => !bookedTimes.includes(time)
+    );
 
-      const times = generateTimeSlots();
-
-      const currentTimeInMinutes = getCurrentTimeInMinutes();
-
-      const isToday = formik.values.date === today.toISOString().split("T")[0];
-      setAvailableTimes(
-        times.filter((time) => {
-          const timeInMinutes = hourToMinutes(time);
-          return (
-            (!isToday || timeInMinutes > currentTimeInMinutes) &&
-            !bookedTimes.includes(time)
-          );
-        })
-      );
-    }
+    setAvailableTimes(() => freeTimes);
   }, [formik.values.date]);
 
   useEffect(() => {
@@ -98,7 +83,7 @@ const useBook = () => {
     setAvailableTimes(generateTimeSlots());
   }, []);
 
-  return { formik, availableTimes, dateRef };
+  return { formik, availableTimes, dateRef, setAvailableTimes };
 };
 
 export default useBook;

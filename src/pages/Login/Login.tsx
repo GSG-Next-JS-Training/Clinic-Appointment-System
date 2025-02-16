@@ -4,24 +4,16 @@ import useLogin from "./hooks/useLogin";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { useState } from "react";
 import classes from "./style.module.css";
 import routeHOC from "@clinic/routes/HOCs/routeHOC";
 import { Stack } from "@mui/material";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { USER_ROLES } from "@clinic/constant";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-const LoginComponent: React.FC = () => {
+const Login: React.FC = () => {
   const { formik, userRole } = useLogin();
-  const [isForgotPassword, setIsForgotPassword] = useState(false);
-
-  const handleForgotPassword = () => {
-    setIsForgotPassword(true);
-  };
-
-  const handleBackToLogin = () => {
-    setIsForgotPassword(false);
-  };
+  const navigate = useNavigate();
 
   return (
     <Box className={classes.container}>
@@ -46,71 +38,63 @@ const LoginComponent: React.FC = () => {
           }}
         >
           <Typography variant="h5" className={classes.title}>
-            {isForgotPassword ? "Forgot Password" : "Login"}
+            Login
           </Typography>
 
           <FormikProvider value={formik}>
             <Form>
-              {!isForgotPassword ? (
-                <Box className={classes.bottom}>
-                  <Stack sx={{ gap: 2, width: "100%" }}>
-                    <ClinicTextField
-                      type="text"
-                      name="email"
-                      placeholder="example@gmail.com"
-                      className={classes.input}
-                    />
-                    <Box>
-                      <ClinicTextField
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        className={classes.input}
-                      />
-
-                      <Typography
-                        variant="body2"
-                        className={classes.forgotPassword}
-                        onClick={handleForgotPassword}
-                        mt={1}
-                      >
-                        Forget Password?
-                      </Typography>
-                    </Box>
-                  </Stack>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    className={classes.submitButton}
-                  >
-                    Login
-                  </Button>
-                </Box>
-              ) : (
-                <>
+              <Box className={classes.bottom}>
+                <Stack sx={{ gap: 2, width: "100%" }}>
                   <ClinicTextField
-                    type="email"
+                    type="text"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder="user@example.com"
                     className={classes.input}
                   />
-                  <Typography
-                    variant="body2"
-                    className={classes.forgotPassword}
-                    onClick={handleBackToLogin}
-                    mt={1}
-                  >
-                    Back to Login!
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    className={classes.submitButton}
-                    sx={{ my: 3 }}
-                  >
-                    Send Reset Link
-                  </Button>
-                </>
-              )}
+                  <Box>
+                    <ClinicTextField
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      className={classes.input}
+                    />
+
+                    <Box
+                      className="flexCenter"
+                      sx={{
+                        justifyContent: "flex-start",
+                        mt: 1,
+                        color: "#1A76D1",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => navigate("/")}
+                    >
+                      <ArrowBackIcon /> Back
+                    </Box>
+                  </Box>
+                </Stack>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    padding: "10px 40px ",
+                    color: "white",
+                    borderRadius: "5px",
+                    backgroundColor: "#1A76D1",
+                    border: "2px solid #ffffff",
+                    transition: "0.3 ease all",
+                    textTransform: "capitalize",
+                    "&:hover": {
+                      backgroundColor: "white",
+                      border: "2px solid #1A76D1",
+                      color: "#1A76D1",
+                    },
+                  }}
+                  fullWidth
+                >
+                  Login
+                </Button>
+              </Box>
             </Form>
           </FormikProvider>
         </Box>
@@ -124,4 +108,4 @@ const withRoutHOC = routeHOC({
   pageAccessName: "login-component",
 });
 
-export default withRoutHOC(LoginComponent);
+export default withRoutHOC(Login);

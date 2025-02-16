@@ -28,12 +28,11 @@ const ViewReport = (props:IProps) => {
           padding: "10px",
           color: "white",
           borderRadius: "15px",
-          backgroundColor: "#87BFF7",
-          border: "2px solid #ffffff",
+          backgroundColor: "#1A76D1",
           transition: "0.3s ease all",
           "&:hover": {
             backgroundColor: "white",
-            border: "2px solid #87BFF7",
+            border: "2px solid #1A76D1",
             color: "#87BFF7",
           },
           "&:focus": {

@@ -28,7 +28,7 @@ const ClinicTextField: FC<TextFieldProps> = ({ name, ...rest }) => {
       sx={{
         "& .MuiOutlinedInput-root": {
           "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#3498db",
+            borderColor: "#1A76D1",
           },
         },
       }}

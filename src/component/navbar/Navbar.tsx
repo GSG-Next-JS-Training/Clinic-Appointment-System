@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#87BFF7" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#1A76D1" }}>
         <Toolbar>
           <Tooltip title="Home Page">
             <Avatar

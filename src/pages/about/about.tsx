@@ -5,19 +5,19 @@ import Footer from "./component/footer";
 import ClinicMap from "./component/map-section";
 
 const About = () => {
-    return (
-        <>
-        <Hero />
-        <ServicesSection/>,
-        <ClinicMap />
-        <Footer />
-        </>
-    )
-}
+  return (
+    <>
+      <Hero />
+      <ServicesSection />,
+      <ClinicMap />
+      <Footer />
+    </>
+  );
+};
 
 const withRoutHOC = routeHOC({
-    title: "About",
-    pageAccessName: "about",
+  title: "About",
+  pageAccessName: "about",
 });
 
 export default withRoutHOC(About);
